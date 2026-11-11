@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__</title>
+<style>
+:root{
+  --bg:#0a0e15; --panel:rgba(14,19,29,.86); --panel-solid:#0e131d; --line:rgba(148,163,184,.16);
+  --text:#e6edf6; --muted:#8b97a8; --faint:#5b6677;
+  --model:#22d3ee; --dqn:#60a5fa; --rapid2:#2dd4bf; --multi:#34d399; --v1:#38bdf8; --pcu:#e879f9; --base:#f59e0b; --mappo:#a78bfa; --mp:#94a3b8; --base2:#f472b6; --good:#34d399; --bad:#f87171;
+  --chip:rgba(148,163,184,.12);
+}
+body.day{
+  --bg:#e9ecef; --panel:rgba(255,255,255,.9); --panel-solid:#fff; --line:rgba(15,23,42,.12);
+  --text:#0f172a; --muted:#526070; --faint:#8a96a6; --model:#0891b2; --dqn:#2563eb; --rapid2:#0d9488; --multi:#059669; --v1:#0284c7; --pcu:#c026d3; --base:#d97706; --mappo:#7c3aed; --mp:#64748b; --base2:#db2777;
+  --good:#059669; --bad:#dc2626; --chip:rgba(15,23,42,.06);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--text);
+  font:13px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif}
+.num{font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
+#stage{position:absolute;inset:0;display:flex}
+.view{position:relative;flex:1;overflow:hidden;border-right:1px solid var(--line)}
+.view:last-child{border-right:0}
+.view canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab}
+.view canvas.drag{cursor:grabbing}
+.vtag{position:absolute;bottom:84px;left:50%;transform:translateX(-50%);z-index:2;padding:5px 12px 5px 10px;border-radius:999px;
+  background:var(--panel);border:1px solid var(--line);font-weight:600;font-size:12px;display:flex;gap:8px;align-items:center;
+  backdrop-filter:blur(8px);pointer-events:none;white-space:nowrap}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.panel{position:absolute;background:var(--panel);border:1px solid var(--line);border-radius:14px;backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+#head{top:14px;left:14px;padding:12px 16px;max-width:min(440px,calc(100vw - 28px))}
+#head h1{margin:0;font-size:16px;letter-spacing:.2px}
+#head .sub{color:var(--muted);font-size:12px;margin-top:3px}
+#head .verdict{margin-top:9px;padding-top:9px;border-top:1px solid var(--line);font-size:12.5px}
+#head .verdict b{font-size:15px}
+#modes{top:14px;left:50%;transform:translateX(-50%);padding:4px;display:flex;gap:2px}
+.seg{border:0;background:transparent;color:var(--muted);padding:7px 12px;border-radius:10px;font:inherit;font-weight:600;cursor:pointer;
+  display:flex;align-items:center;gap:7px;white-space:nowrap}
+.seg:hover{color:var(--text)}
+.seg.on{background:var(--chip);color:var(--text)}
+#side{top:14px;right:14px;width:330px;max-height:calc(100vh - 110px);overflow:auto;padding:14px}
+#side h3{margin:2px 0 8px;font-size:11px;letter-spacing:.9px;text-transform:uppercase;color:var(--muted);font-weight:700}
+.sec{padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+.sec:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+table.k{width:100%;border-collapse:collapse}
+table.k td,table.k th{padding:4px 0;text-align:right}
+table.k th{font-weight:600;color:var(--muted);font-size:11px}
+table.k td:first-child,table.k th:first-child{text-align:left;color:var(--muted)}
+table.k td:not(:first-child){font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.k th{white-space:nowrap}
+.delta{font-size:11px;padding:1px 6px;border-radius:6px;margin-left:4px}
+.delta.g{color:var(--good);background:color-mix(in srgb,var(--good) 14%,transparent)}
+.delta.b{color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,transparent)}
+canvas.chart{width:100%;height:92px;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;color:var(--muted);font-size:12px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+#bar{left:50%;bottom:14px;transform:translateX(-50%);width:min(860px,calc(100vw - 28px));padding:10px 14px;display:flex;align-items:center;gap:12px}
+.btn{border:1px solid var(--line);background:var(--chip);color:var(--text);border-radius:10px;height:34px;min-width:34px;padding:0 10px;
+  font:inherit;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn:hover{border-color:var(--muted)}
+.btn.rec{color:var(--bad)}
+.btn.rec.on{background:var(--bad);color:#fff}
+select.btn{appearance:none;padding:0 10px}
+#time{min-width:96px;font-size:14px;font-weight:600}
+#scrubwrap{position:relative;flex:1;height:34px}
+#scrubwrap canvas{position:absolute;inset:0;width:100%;height:100%}
+#scrub{position:absolute;inset:0;width:100%;margin:0;opacity:0;cursor:pointer}
+#layers{left:14px;bottom:84px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;font-size:12px}
+#layers label{display:flex;align-items:center;gap:8px;cursor:pointer;color:var(--muted)}
+#layers label:hover{color:var(--text)}
+#layers input{accent-color:var(--model)}
+#layers .row{display:flex;gap:6px;margin-top:2px}
+#junc{display:none}
+#junc.show{display:block}
+.close{float:right;cursor:pointer;color:var(--muted);border:0;background:none;font-size:16px;line-height:1}
+.hint{color:var(--faint);font-size:11px;margin-top:6px}
+#side.hide{display:none}
+.split .view:first-child .vtag{left:auto;right:12px;transform:none}
+body.wide #side{width:400px}
+body.wider #side{width:460px}
+@media (max-width:900px){
+  #side{width:calc(100vw - 28px);top:auto;bottom:84px;max-height:38vh;display:none}
+  #side.open{display:block}
+  #layers{display:none}
+  #head{max-width:calc(100vw - 28px)}
+  #modes{top:auto;bottom:84px;left:14px;transform:none}
+  .vtag{bottom:140px}
+}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+
+<div id="head" class="panel">
+  <h1 id="ttl"></h1>
+  <div class="sub" id="sub"></div>
+  <div class="verdict" id="verdict"></div>
+</div>
+
+<div id="modes" class="panel"></div>
+
+<div id="side" class="panel">
+  <div class="sec" id="junc">
+    <button class="close" id="jclose" title="close">×</button>
+    <h3 id="jtitle">Junction</h3>
+    <div id="jinfo" class="sub" style="color:var(--muted);font-size:12px;margin-bottom:6px"></div>
+    <canvas class="chart" id="jq"></canvas>
+    <canvas class="chart" id="jph" style="height:auto"></canvas>
+  </div>
+  <div class="sec">
+    <h3>Live</h3>
+    <table class="k" id="live"></table>
+  </div>
+  <div class="sec">
+    <h3>Vehicles stopped in the network</h3>
+    <canvas class="chart" id="c1"></canvas>
+  </div>
+  <div class="sec">
+    <h3>Average waiting time so far (s / vehicle)</h3>
+    <canvas class="chart" id="c2"></canvas>
+  </div>
+  <div class="sec" id="avgsec" style="display:none">
+    <h3 id="avgtitle">Average of the 12 test episodes</h3>
+    <table class="k" id="avgtbl"></table>
+  </div>
+  <div class="sec">
+    <h3>Final result (this episode)</h3>
+    <table class="k" id="final"></table>
+  </div>
+  <div class="sec">
+    <h3>Legend</h3>
+    <div class="legend" id="legend"></div>
+    <div class="hint">Click a ringed junction to inspect what its agent did. Scroll to zoom, drag to pan.
+      Keys: space play · ←/→ seek · 1…n one controller · 0 all side by side · +/− speed</div>
+  </div>
+</div>
+
+<div id="layers" class="panel">
+  <label><input type="checkbox" id="lNight" checked> Night mode</label>
+  <label><input type="checkbox" id="l3d" checked> 3D buildings</label>
+  <label><input type="checkbox" id="lAgents" checked> Agent rings</label>
+  <label><input type="checkbox" id="lLabels" checked> Street names</label>
+  <label><input type="checkbox" id="lFollow"> Colour by speed</label>
+</div>
+
+<div id="bar" class="panel">
+  <button class="btn" id="play" title="Play / pause (space)">▶</button>
+  <select class="btn" id="speed" title="Playback speed">
+    <option value="1">1×</option><option value="2">2×</option><option value="4" selected>4×</option>
+    <option value="8">8×</option><option value="16">16×</option><option value="32">32×</option>
+  </select>
+  <div id="time" class="num">00:00</div>
+  <div id="scrubwrap"><canvas id="scrubc"></canvas><input type="range" id="scrub" min="0" max="1000" step="1" value="0"></div>
+  <button class="btn" id="fit" title="Fit map">⤢</button>
+  <button class="btn rec" id="rec" title="Record a video of the view (.webm)">● REC</button>
+  <button class="btn" id="toggleSide" title="Stats">Stats</button>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+(() => {
+"use strict";
+const S = DATA.scene, RUNS = DATA.runs, META = DATA.meta;
+const COLMAP = { rapid: "--model", rapid_v2: "--rapid2", rapid_v1: "--v1", rapid_pcu: "--pcu", rapid_multicity: "--multi", independent: "--dqn", mappo: "--mappo",
+  max_pressure: "--mp", advanced_mp: "--base2", fixed_program: "--base" };
+const FREE = ["--model", "--dqn", "--mappo", "--base2", "--mp"];
+const RUN_COL = RUNS.map((r, i) => COLMAP[r.name] || FREE[i % FREE.length]);
+// the baseline every other run is compared with: fixed-time if present, else the last run
+const BASE = RUNS.findIndex(r => r.name === "fixed_program") >= 0 ? RUNS.findIndex(r => r.name === "fixed_program") : RUNS.length - 1;
+const CMP = j => RUNS.length > 1 && j !== BASE;
+if (RUNS.length > 2) document.body.classList.add("wide");
+if (RUNS.length > 3) document.body.classList.add("wider");
+if (RUNS.length > 3 && innerWidth < 2200) document.getElementById("side").classList.add("hide");   // 4+ panes: map first, Stats button shows the numbers
+const $ = id => document.getElementById(id);
+const css = v => getComputedStyle(document.body).getPropertyValue(v).trim();
+
+// ---------------------------------------------------------------- decode runs
+function b64(s, T) {
+  const bin = atob(s), u8 = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+  return new T(u8.buffer);
+}
+RUNS.forEach(r => {
+  r.OFF = b64(r.off, Uint32Array); r.VID = b64(r.vid, r.vbig ? Uint32Array : Uint16Array);
+  r.X = b64(r.x, Uint16Array); r.Y = b64(r.y, Uint16Array); r.A = b64(r.a, Uint8Array); r.SP = b64(r.s, Uint8Array);
+  r.VT = b64(r.vtype, Uint8Array); r.nxtF = -1; r.nxt = null;
+  // signals: sorted change lists -> lookup by time
+  r.tlsIdx = {};
+  r.agentIdx = {}; META.agent_order.forEach((a, i) => r.agentIdx[a] = i);
+});
+const T = Math.min(...RUNS.map(r => r.T));
+const AG = S.agents;
+
+function tlsState(run, id, t) {
+  const ch = run.tls[id]; if (!ch) return null;
+  let lo = 0, hi = ch.length - 1;
+  if (t < ch[0][0]) return ch[0][1];
+  while (lo < hi) { const m = (lo + hi + 1) >> 1; if (ch[m][0] <= t) lo = m; else hi = m - 1; }
+  return ch[lo][1];
+}
+function stepAt(run, t) {
+  const ts = run.steps.t; let lo = 0, hi = ts.length - 1;
+  if (!ts.length || t < ts[0]) return -1;
+  while (lo < hi) { const m = (lo + hi + 1) >> 1; if (ts[m] <= t) lo = m; else hi = m - 1; }
+  return lo;
+}
+function nextMap(run, f) {
+  if (run.nxtF === f) return run.nxt;
+  const a0 = run.OFF[f], a1 = run.OFF[f + 1], b0 = run.OFF[f + 1], b1 = f + 2 < run.OFF.length ? run.OFF[f + 2] : b0;
+  const m = new Map(); for (let j = b0; j < b1; j++) m.set(run.VID[j], j);
+  const nx = new Int32Array(a1 - a0);
+  for (let i = a0; i < a1; i++) { const j = m.get(run.VID[i]); nx[i - a0] = j === undefined ? -1 : j; }
+  run.nxtF = f; run.nxt = nx; return nx;
+}
+
+// ---------------------------------------------------------------- themes
+const TH = {
+  night: { bg: "#0a0e15", zone: ["#0d121b", "#101622", "#121521", "#111418", "#121a1d", "#141223"], green: "#0f2219", water: "#0c2135",
+    canal: "#123049", rail: "#2f3848", casing: "#04070b", road: ["#252e3d", "#2a3445", "#303b4e", "#364358", "#3c4a62", "#43526d"],
+    junction: "#2a3445", mark: "rgba(170,185,205,.28)", center: "rgba(240,190,80,.32)", bWall: ["#141a25", "#19202c"], bRoof: "#1d2532",
+    bEdge: "rgba(120,140,170,.18)", label: "rgba(180,192,210,.75)", labelHalo: "rgba(10,14,21,.85)", shadow: "rgba(0,0,0,.45)",
+    windows: "rgba(255,206,120,.10)" },
+  day: { bg: "#eef0ec", zone: ["#e8eae5", "#eceae4", "#f1ece6", "#e5e3e7", "#e6e9ec", "#efe8ef"], green: "#cfe8c4", water: "#a9d3f0",
+    canal: "#9ccbee", rail: "#9aa1ab", casing: "#c6cbd2", road: ["#ffffff", "#ffffff", "#fffdf6", "#fff6dc", "#ffe9b8", "#ffd98a"],
+    junction: "#ffffff", mark: "rgba(120,130,145,.45)", center: "rgba(230,160,40,.6)", bWall: ["#d3d0ca", "#c4c1bb"], bRoof: "#e2dfd9",
+    bEdge: "rgba(110,105,95,.35)", label: "rgba(60,68,80,.9)", labelHalo: "rgba(255,255,255,.9)", shadow: "rgba(40,40,60,.18)",
+    windows: "rgba(0,0,0,0)" }
+};
+let night = true;
+const th = () => night ? TH.night : TH.day;
+
+const CAR_COLS_N = ["#e8edf3", "#c9d1dc", "#9aa6b6", "#5d6b80", "#3b82f6", "#ef4444", "#94a3b8", "#f8fafc", "#64748b", "#1e3a8a"];
+const CAR_COLS_D = ["#f8fafc", "#cbd5e1", "#94a3b8", "#475569", "#2563eb", "#dc2626", "#1f2937", "#e2e8f0", "#0f172a", "#1d4ed8"];
+const VT = [  // length, width, name
+  { L: 4.3, W: 1.8, name: "Car" }, { L: 2.0, W: 0.8, name: "Two-wheeler" }, { L: 2.8, W: 1.4, name: "Auto-rickshaw" },
+  { L: 11, W: 2.5, name: "Bus" }, { L: 8, W: 2.4, name: "Truck" }];
+
+// ---------------------------------------------------------------- views
+const views = [];
+let mode = RUNS.length > 1 ? "split" : "single";
+let active = 0;              // run shown in single mode
+let cam = { x: S.w / 2, y: S.h / 2, z: 1 };
+const opt = { b3d: true, agents: true, labels: true, speedCol: false };
+
+function makeView(runIdx) {
+  const el = document.createElement("div"); el.className = "view";
+  const cv = document.createElement("canvas"); el.appendChild(cv);
+  const tag = document.createElement("div"); tag.className = "vtag"; el.appendChild(tag);
+  $("stage").appendChild(el);
+  const v = { el, cv, ctx: cv.getContext("2d"), tag, run: runIdx, W: 0, H: 0, dpr: 1,
+    ground: document.createElement("canvas"), top: document.createElement("canvas"), cacheCam: null, dirty: true };
+  attachInput(v); return v;
+}
+function layoutViews() {
+  $("stage").innerHTML = ""; views.length = 0;
+  const idx = mode === "split" ? RUNS.map((_, i) => i).slice(0, 6) : [active];
+  $("stage").classList.toggle("split", mode === "split");
+  idx.forEach(i => views.push(makeView(i)));
+  views.forEach(v => {
+    const c = css(RUN_COL[v.run]);
+    v.tag.innerHTML = `<span class="dot" style="background:${c}"></span>${RUNS[v.run].label}`;
+  });
+  resize();
+}
+function resize() {
+  views.forEach(v => {
+    const r = v.el.getBoundingClientRect(), d = Math.min(2, window.devicePixelRatio || 1);
+    v.W = r.width; v.H = r.height; v.dpr = d;
+    v.cv.width = v.W * d; v.cv.height = v.H * d;
+    v.ground.width = v.top.width = v.W * d; v.ground.height = v.top.height = v.H * d;
+    v.dirty = true;
+  });
+  sizeCharts();
+}
+function fit() {
+  const v = views[0]; if (!v) return;
+  const z = Math.min(v.W / S.w, v.H / S.h) * 0.92;
+  cam = { x: S.w / 2, y: S.h / 2, z };
+  views.forEach(w => w.dirty = true);
+}
+
+// ---------------------------------------------------------------- static layers
+function tr(v, c) { return [(x) => (x - c.x) * c.z + v.W / 2, (y) => v.H / 2 - (y - c.y) * c.z]; }
+
+function pathPts(ctx, p, X, Y, close) {
+  ctx.moveTo(X(p[0]), Y(p[1]));
+  for (let i = 2; i < p.length; i += 2) ctx.lineTo(X(p[i]), Y(p[i + 1]));
+  if (close) ctx.closePath();
+}
+function offsetLine(p, d) {   // polyline offset by d metres to the left of travel direction
+  const out = [];
+  const n = p.length / 2;
+  for (let i = 0; i < n; i++) {
+    const a = Math.max(0, i - 1), b = Math.min(n - 1, i + 1);
+    let dx = p[2 * b] - p[2 * a], dy = p[2 * b + 1] - p[2 * a + 1];
+    const L = Math.hypot(dx, dy) || 1; dx /= L; dy /= L;
+    out.push(p[2 * i] - dy * d, p[2 * i + 1] + dx * d);
+  }
+  return out;
+}
+S.lanes.forEach(l => {
+  const side = META.lefthand ? -1 : 1;          // lane boundary towards the next-higher lane index
+  if (l.i < l.n - 1) l.mk = offsetLine(l.p, side * l.w / 2);
+  if (l.i === l.n - 1) l.ctr = offsetLine(l.p, side * (l.w / 2 + 0.05));
+});
+const BD = S.backdrop;
+
+function drawGround(v) {
+  const g = v.ground.getContext("2d"), t = th(), c = cam;
+  g.setTransform(v.dpr, 0, 0, v.dpr, 0, 0);
+  const [X, Y] = tr(v, c), z = c.z;
+  g.fillStyle = t.bg; g.fillRect(0, 0, v.W, v.H);
+  g.lineJoin = "round"; g.lineCap = "round";
+  if (BD) {
+    BD.zones.forEach(o => { g.beginPath(); pathPts(g, o.p, X, Y, true); g.fillStyle = t.zone[o.z] || t.zone[0]; g.fill(); });
+    g.fillStyle = t.green; BD.green.forEach(p => { g.beginPath(); pathPts(g, p, X, Y, true); g.fill(); });
+    g.fillStyle = t.water; BD.water.forEach(p => { g.beginPath(); pathPts(g, p, X, Y, true); g.fill(); });
+    g.strokeStyle = t.canal; BD.canals.forEach(o => { g.lineWidth = Math.max(1, o.w * z); g.beginPath(); pathPts(g, o.p, X, Y); g.stroke(); });
+    // rail: solid bed + sleepers
+    BD.rail.forEach(p => {
+      g.strokeStyle = t.rail; g.lineWidth = Math.max(1.2, 3.2 * z); g.setLineDash([]); g.beginPath(); pathPts(g, p, X, Y); g.stroke();
+      if (z > 0.6) { g.strokeStyle = t.bg; g.lineWidth = Math.max(0.6, 1.4 * z); g.setLineDash([3 * z, 3 * z]); g.beginPath(); pathPts(g, p, X, Y); g.stroke(); g.setLineDash([]); }
+    });
+    if (!opt.b3d) {   // flat buildings with a soft drop shadow
+      const sh = Math.max(1, 2.5 * z);
+      g.fillStyle = t.shadow; BD.buildings.forEach(b => { g.beginPath(); pathPts(g, b.p, x => X(x) + sh, y => Y(y) + sh, true); g.fill(); });
+      g.fillStyle = t.bRoof; g.strokeStyle = t.bEdge; g.lineWidth = 0.7;
+      BD.buildings.forEach(b => { g.beginPath(); pathPts(g, b.p, X, Y, true); g.fill(); g.stroke(); });
+    }
+  }
+  // roads: casing, asphalt, junctions, markings
+  const order = S.lanes.slice().sort((a, b) => a.c - b.c);
+  g.strokeStyle = t.casing;
+  order.forEach(l => { g.lineWidth = Math.max(1.6, (l.w + 0.9) * z); g.beginPath(); pathPts(g, l.p, X, Y); g.stroke(); });
+  g.fillStyle = t.junction; g.strokeStyle = t.casing; g.lineWidth = 0.8 * z;
+  S.junctions.forEach(p => { g.beginPath(); pathPts(g, p, X, Y, true); g.fill(); });
+  order.forEach(l => { g.strokeStyle = t.road[l.c] || t.road[1]; g.lineWidth = Math.max(l.c >= 3 ? 1.4 : 0.9, (l.w + 0.15) * z); g.beginPath(); pathPts(g, l.p, X, Y); g.stroke(); });
+  g.fillStyle = t.junction; S.junctions.forEach(p => { g.beginPath(); pathPts(g, p, X, Y, true); g.fill(); });
+  if (z > 1.1) {
+    g.lineCap = "butt";
+    g.strokeStyle = t.mark; g.lineWidth = Math.max(0.6, 0.15 * z); g.setLineDash([3 * z, 6 * z]);
+    S.lanes.forEach(l => { if (l.mk) { g.beginPath(); pathPts(g, l.mk, X, Y); g.stroke(); } });
+    g.setLineDash([]); g.strokeStyle = t.center; g.lineWidth = Math.max(0.6, 0.14 * z);
+    S.lanes.forEach(l => { if (l.ctr && l.c >= 2) { g.beginPath(); pathPts(g, l.ctr, X, Y); g.stroke(); } });
+    g.lineCap = "round";
+  }
+}
+
+function drawTop(v) {
+  const g = v.top.getContext("2d"), t = th(), c = cam;
+  g.setTransform(v.dpr, 0, 0, v.dpr, 0, 0); g.clearRect(0, 0, v.W, v.H);
+  const [X, Y] = tr(v, c), z = c.z;
+  if (BD && opt.b3d) {
+    const k = 0.42 * z;                      // screen pixels of rise per metre of height (oblique view from the south)
+    BD.buildings.forEach(b => {
+      const p = b.p, n = p.length / 2, rise = b.h * k;
+      const xs = new Array(n), ys = new Array(n);
+      for (let i = 0; i < n; i++) { xs[i] = X(p[2 * i]); ys[i] = Y(p[2 * i + 1]); }
+      if (Math.max(...xs) < -50 || Math.min(...xs) > v.W + 50 || Math.max(...ys) < -50 || Math.min(...ys) - rise > v.H + 50) return;
+      // walls
+      for (let i = 0; i < n - 1; i++) {
+        const dx = xs[i + 1] - xs[i];
+        g.fillStyle = t.bWall[dx > 0 ? 0 : 1];
+        g.beginPath(); g.moveTo(xs[i], ys[i]); g.lineTo(xs[i + 1], ys[i + 1]); g.lineTo(xs[i + 1], ys[i + 1] - rise); g.lineTo(xs[i], ys[i] - rise); g.closePath(); g.fill();
+      }
+      // roof
+      g.beginPath(); g.moveTo(xs[0], ys[0] - rise);
+      for (let i = 1; i < n; i++) g.lineTo(xs[i], ys[i] - rise);
+      g.closePath(); g.fillStyle = t.bRoof; g.fill(); g.strokeStyle = t.bEdge; g.lineWidth = 0.7; g.stroke();
+      if (night && z > 1.2 && rise > 10) {     // a few lit windows
+        g.fillStyle = t.windows;
+        g.fill();
+      }
+    });
+  }
+  if (opt.labels) drawLabels(g, v, X, Y, z);
+}
+
+function drawLabels(g, v, X, Y, z) {
+  const t = th(), placed = [];
+  g.textAlign = "center"; g.textBaseline = "middle";
+  for (const l of S.labels) {
+    const fs = l.c >= 3 ? 12 : 11;
+    if (l.c < 2 && z < 1.3) continue;
+    if (l.c < 3 && z < 0.7) continue;
+    g.font = `${l.c >= 3 ? 600 : 500} ${fs}px system-ui,sans-serif`;
+    const w = g.measureText(l.t).width;
+    if (w > l.l * z * 0.9) continue;
+    const x = X(l.x), y = Y(l.y);
+    if (x < -w || x > v.W + w || y < -20 || y > v.H + 20) continue;
+    const bb = [x - w / 2 - 4, y - w / 2 * Math.abs(Math.sin(l.a)) - 8, x + w / 2 + 4, y + w / 2 * Math.abs(Math.sin(l.a)) + 8];
+    if (placed.some(q => !(bb[2] < q[0] || bb[0] > q[2] || bb[3] < q[1] || bb[1] > q[3]))) continue;
+    placed.push(bb);
+    g.save(); g.translate(x, y); g.rotate(-l.a);
+    g.lineWidth = 3; g.strokeStyle = t.labelHalo; g.strokeText(l.t, 0, 0);
+    g.fillStyle = t.label; g.fillText(l.t, 0, 0); g.restore();
+  }
+}
+
+function refreshStatic(v) {
+  drawGround(v); drawTop(v);
+  v.cacheCam = { ...cam }; v.dirty = false;
+}
+let idleTimer = null;
+function camChanged() {   // during pan/zoom: reuse cached layers transformed, re-render when idle
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => views.forEach(v => v.dirty = true), 90);
+}
+function blitCached(v, ctx, layer) {
+  const a = v.cacheCam, s = cam.z / a.z;
+  // world point at cached screen centre maps to:
+  const ox = (a.x - cam.x) * cam.z + v.W / 2 - (v.W / 2) * s, oy = v.H / 2 - (a.y - cam.y) * cam.z - (v.H / 2) * s;
+  ctx.drawImage(layer, ox, oy, v.W * s, v.H * s);
+}
+
+// ---------------------------------------------------------------- dynamic layer
+const SIG = { G: "#22c55e", g: "#4ade80", y: "#facc15", Y: "#facc15", r: "#ef4444", R: "#ef4444", u: "#fb923c", o: "#94a3b8", O: "#94a3b8", s: "#ef4444" };
+function speedColor(s) {                      // m/s -> red (stopped) .. amber .. green (free flow)
+  const f = Math.max(0, Math.min(1, s / 12));
+  const h = f * 130; return `hsl(${h},85%,${night ? 58 : 45}%)`;
+}
+const PH_COLS = ["#22d3ee", "#a78bfa", "#f472b6", "#34d399", "#facc15", "#fb923c", "#60a5fa", "#e879f9"];
+
+function drawDynamic(v, ctx, t) {
+  const run = RUNS[v.run], c = cam, z = c.z, [X, Y] = tr(v, c), th_ = th();
+  // signals at stop lines
+  const ti = Math.floor(t);
+  for (const id in S.signals) {
+    const st = tlsState(run, id, ti); if (!st) continue;
+    for (const it of S.signals[id]) {
+      const x = X(it.x), y = Y(it.y);
+      if (x < -30 || x > v.W + 30 || y < -30 || y > v.H + 30) continue;
+      const k = it.k.length, w = it.w * z, th2 = Math.max(2, 0.9 * z);
+      ctx.save(); ctx.translate(x, y); ctx.rotate(-it.a);
+      for (let j = 0; j < k; j++) {
+        const col = SIG[st[it.k[j]]] || "#64748b";
+        if (night && z > 0.5) { ctx.fillStyle = col + "33"; ctx.fillRect(-th2 * 2.2, -w / 2 + j * w / k - 1, th2 * 3.4, w / k + 2); }
+        ctx.fillStyle = col; ctx.fillRect(-th2, -w / 2 + j * w / k + 0.4, th2, w / k - 0.8);
+      }
+      ctx.restore();
+    }
+  }
+  // agents: halo by queue, ring with one arc per phase, pulse on a decision
+  const k = stepAt(run, ti);
+  if (opt.agents && v.run !== undefined) {
+    AG.forEach(a => {
+      const i = run.agentIdx[a.id], x = X(a.x), y = Y(a.y);
+      if (x < -60 || x > v.W + 60 || y < -60 || y > v.H + 60) return;
+      const R = Math.min(26, Math.max(9, 11 * z)), q = k >= 0 ? run.steps.q[k][i] : 0, ph = k >= 0 ? run.steps.ph[k][i] : 0;
+      if (q > 0) {
+        const hr = R * (1.15 + Math.min(1.6, q / 10));
+        const gr = ctx.createRadialGradient(x, y, R * 0.6, x, y, hr);
+        gr.addColorStop(0, `rgba(248,113,113,${Math.min(0.42, 0.1 + q / 60)})`); gr.addColorStop(1, "rgba(248,113,113,0)");
+        ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(x, y, hr, 0, 7); ctx.fill();
+      }
+      const n = a.n, gap = 0.16;
+      ctx.lineWidth = Math.max(2, 2.6 * Math.min(z, 1.6)); ctx.lineCap = "round";
+      for (let p = 0; p < n; p++) {
+        const a0 = -Math.PI / 2 + p * 2 * Math.PI / n + gap, a1 = -Math.PI / 2 + (p + 1) * 2 * Math.PI / n - gap;
+        ctx.strokeStyle = p === ph ? PH_COLS[p % PH_COLS.length] : (night ? "rgba(148,163,184,.25)" : "rgba(15,23,42,.18)");
+        ctx.beginPath(); ctx.arc(x, y, R, a0, Math.max(a0 + 0.05, a1)); ctx.stroke();
+      }
+      // pulse when this agent switched in the last decision
+      if (k >= 0 && run.steps.sw[k][i]) {
+        const age = t - run.steps.t[k];
+        if (age < 3) { ctx.strokeStyle = `rgba(34,211,238,${0.7 * (1 - age / 3)})`; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, R + 6 + age * 7, 0, 7); ctx.stroke(); }
+      }
+      if (sel === a.id) { ctx.strokeStyle = night ? "#fff" : "#0f172a"; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.arc(x, y, R + 9, 0, 7); ctx.stroke(); ctx.setLineDash([]); }
+    });
+  }
+  // vehicles
+  const f = Math.min(Math.floor(t), run.T), al = t - f, f2 = Math.min(f + 1, run.T);
+  const nx = f2 > f ? nextMap(run, f) : null, a0 = run.OFF[f], a1 = run.OFF[f + 1], q = run.q;
+  const dotMode = z < 0.55, cols = night ? CAR_COLS_N : CAR_COLS_D;
+  for (let i = a0; i < a1; i++) {
+    let wx = run.X[i] * q, wy = run.Y[i] * q, ang = run.A[i] * 360 / 256, sp = run.SP[i] / 8;
+    const j = nx ? nx[i - a0] : -1;
+    if (j >= 0) {
+      wx += (run.X[j] * q - wx) * al; wy += (run.Y[j] * q - wy) * al;
+      let da = run.A[j] * 360 / 256 - ang; if (da > 180) da -= 360; if (da < -180) da += 360;
+      ang += da * al; sp += (run.SP[j] / 8 - sp) * al;
+    }
+    const x = X(wx), y = Y(wy);
+    if (x < -40 || x > v.W + 40 || y < -40 || y > v.H + 40) continue;
+    const vid = run.VID[i], ty = run.VT[vid] || 0, d = VT[ty] || VT[0];
+    let body;
+    if (opt.speedCol) body = speedColor(sp);
+    else if (ty === 0) body = cols[(vid * 7) % cols.length];
+    else if (ty === 1) body = night ? "#cbd5e1" : "#334155";
+    else if (ty === 2) body = "#facc15";
+    else if (ty === 3) body = "#dc2626";
+    else body = night ? "#60a5fa" : "#2563eb";
+    if (dotMode) { ctx.fillStyle = body; ctx.fillRect(x - 1.8, y - 1.8, 3.6, 3.6); continue; }
+    const rot = (ang - 90) * Math.PI / 180, L = d.L * z, W = Math.max(1.2, d.W * z);
+    ctx.save(); ctx.translate(x, y); ctx.rotate(rot);
+    if (night && z > 0.9) {                 // headlight beam
+      const gr = ctx.createLinearGradient(0, 0, 9 * z, 0);
+      gr.addColorStop(0, "rgba(255,236,170,.30)"); gr.addColorStop(1, "rgba(255,236,170,0)");
+      ctx.fillStyle = gr; ctx.beginPath(); ctx.moveTo(0, -W * 0.35); ctx.lineTo(9 * z, -W * 1.1); ctx.lineTo(9 * z, W * 1.1); ctx.lineTo(0, W * 0.35); ctx.fill();
+    }
+    ctx.fillStyle = body;
+    const r = Math.min(W, L) * 0.28;
+    ctx.beginPath(); ctx.roundRect ? ctx.roundRect(-L, -W / 2, L, W, r) : ctx.rect(-L, -W / 2, L, W); ctx.fill();
+    if (z > 1.6) {
+      if (ty === 2) { ctx.fillStyle = "#111827"; ctx.fillRect(-L * 0.78, -W / 2, L * 0.62, W); }          // auto: black canopy
+      else if (ty === 1) { ctx.fillStyle = night ? "#475569" : "#0f172a"; ctx.beginPath(); ctx.arc(-L * 0.5, 0, W * 0.45, 0, 7); ctx.fill(); } // rider
+      else if (ty === 3) { ctx.fillStyle = "rgba(255,255,255,.75)"; ctx.fillRect(-L + 0.6 * z, -W / 2 + 0.25 * z, L - 1.2 * z, Math.max(0.6, 0.18 * z)); ctx.fillRect(-L + 0.6 * z, W / 2 - 0.25 * z - Math.max(0.6, 0.18 * z), L - 1.2 * z, Math.max(0.6, 0.18 * z)); }
+      else { ctx.fillStyle = night ? "rgba(10,14,21,.55)" : "rgba(15,23,42,.45)"; ctx.fillRect(-L * 0.62, -W / 2 + W * 0.14, L * 0.36, W * 0.72); }
+    }
+    // brake / tail lights
+    if (z > 0.9 && ty !== 1) {
+      const stop = sp < 0.5;
+      ctx.fillStyle = stop ? "#ff3b3b" : (night ? "rgba(255,60,60,.55)" : "rgba(180,20,20,.5)");
+      const s2 = Math.max(0.8, 0.35 * z);
+      ctx.fillRect(-L - (stop && night ? s2 * 0.5 : 0), -W / 2, s2, s2 * 1.2); ctx.fillRect(-L - (stop && night ? s2 * 0.5 : 0), W / 2 - s2 * 1.2, s2, s2 * 1.2);
+      if (stop && night) { ctx.fillStyle = "rgba(255,40,40,.18)"; ctx.beginPath(); ctx.arc(-L, 0, W * 0.9, 0, 7); ctx.fill(); }
+    }
+    ctx.restore();
+  }
+}
+
+function render(t) {
+  views.forEach(v => {
+    if (v.dirty || !v.cacheCam) refreshStatic(v);
+    const ctx = v.ctx; ctx.setTransform(v.dpr, 0, 0, v.dpr, 0, 0);
+    const same = v.cacheCam.x === cam.x && v.cacheCam.y === cam.y && v.cacheCam.z === cam.z;
+    ctx.fillStyle = th().bg; ctx.fillRect(0, 0, v.W, v.H);
+    if (same) ctx.drawImage(v.ground, 0, 0, v.W, v.H); else blitCached(v, ctx, v.ground);
+    drawDynamic(v, ctx, t);
+    if (same) ctx.drawImage(v.top, 0, 0, v.W, v.H); else blitCached(v, ctx, v.top);
+  });
+}
+
+// ---------------------------------------------------------------- input
+let sel = null;
+function attachInput(v) {
+  let drag = null;
+  v.cv.addEventListener("pointerdown", e => { drag = { x: e.clientX, y: e.clientY, cx: cam.x, cy: cam.y, moved: false }; v.cv.setPointerCapture(e.pointerId); v.cv.classList.add("drag"); });
+  v.cv.addEventListener("pointermove", e => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (Math.abs(dx) + Math.abs(dy) > 3) drag.moved = true;
+    cam.x = drag.cx - dx / cam.z; cam.y = drag.cy + dy / cam.z; camChanged();
+  });
+  v.cv.addEventListener("pointerup", e => {
+    v.cv.classList.remove("drag");
+    if (drag && !drag.moved) pick(v, e);
+    drag = null;
+  });
+  v.cv.addEventListener("wheel", e => {
+    e.preventDefault();
+    const r = v.cv.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
+    const wx = cam.x + (mx - v.W / 2) / cam.z, wy = cam.y - (my - v.H / 2) / cam.z;
+    const nz = Math.max(0.15, Math.min(14, cam.z * Math.exp(-e.deltaY * 0.0015)));
+    cam.z = nz; cam.x = wx - (mx - v.W / 2) / nz; cam.y = wy + (my - v.H / 2) / nz; camChanged();
+  }, { passive: false });
+}
+function pick(v, e) {
+  const r = v.cv.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top, [X, Y] = tr(v, cam);
+  let best = null, bd = 28;
+  AG.forEach(a => { const d = Math.hypot(X(a.x) - mx, Y(a.y) - my); if (d < bd) { bd = d; best = a.id; } });
+  sel = best; showJunction();
+}
+
+// ---------------------------------------------------------------- side panel
+const fmtT = s => `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+function pct(a, b, lowerBetter = true) {
+  if (a == null || b == null || !isFinite(a) || !isFinite(b) || b === 0) return "";
+  const p = (a - b) / Math.abs(b) * 100, good = lowerBetter ? p < 0 : p > 0;
+  if (Math.abs(p) < 0.5) return `<span class="delta">±0%</span>`;
+  return `<span class="delta ${good ? "g" : "b"}">${p > 0 ? "+" : ""}${p.toFixed(0)}%</span>`;
+}
+function header() {
+  $("ttl").textContent = `${META.title || META.map.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())} · AI traffic signals`;
+  document.title = DATA.title;
+  const fleet = META.fleet === "india" ? "mixed Indian traffic" : "cars";
+  $("sub").innerHTML = `${META.n_agents} AI-controlled junctions · ${META.n_trips} vehicles (${fleet}) · ${META.scenario.replace("_", " ")} · seed ${META.seed} · ${META.lefthand ? "left" : "right"}-hand traffic`;
+  if (RUNS.length > 1) {
+    const AV = RUNS[0].avg != null, M = r => AV ? r.avg : r.metrics;
+    const b = M(RUNS[BASE]);
+    // headline = the main metric (total travel time of all vehicles); waiting time and blocked vehicles alongside
+    const red = r => { const v = M(r).max_red_s; return v == null || v !== v ? "–" : v.toFixed(0); };
+    $("verdict").innerHTML = `<b>Total travel time</b> (main metric${AV ? ", average of 12 test episodes" : ""}) vs <b style="color:${css(RUN_COL[BASE])}">${b.total_travel_h.toFixed(1)} veh·h</b> with ${short(RUNS[BASE].label)}:<br>` +
+      RUNS.map((r, i) => i === BASE ? "" : `<b style="color:${css(RUN_COL[i])}">${M(r).total_travel_h.toFixed(1)}</b> ${colName(i)} ${pct(M(r).total_travel_h, b.total_travel_h, true)}`)
+        .filter(Boolean).join(" &nbsp;·&nbsp; ") +
+      `<div style="margin-top:6px;color:var(--muted);font-size:11.5px">Avg wait (s): ` +
+      RUNS.map((r, i) => `${colName(i)} ${M(r).avg_wait_s.toFixed(1)}`).join(" · ") +
+      `<br>Longest red with cars waiting (s): ` + RUNS.map((r, i) => `${colName(i)} ${red(r)}`).join(" · ") +
+      (AV ? `<br>Replaying ${META.scenario.replace("_", " ")}, seed ${META.seed}${META.shown === "representative" ? ": the test episode closest to these averages" : ""}` : "") + `</div>`;
+  } else $("verdict").style.display = "none";
+  const fin = $("final"), cols = RUNS.map((r, i) => `<th style="color:${css(RUN_COL[i])}">${colName(i)}</th>`).join("");
+  const rows = [["Total travel (main)", "total_travel_h", "veh·h", true], ["Vehicles arrived", "throughput", "", false],
+    ["Never entered (blocked)", "not_entered", "", true], ["Avg waiting / veh", "avg_wait_s", "s", true], ["Avg trip time", "avg_trip_s", "s", true],
+    ["Longest red, cars waiting (s)", "max_red_s", "s", true], ["Max lane queue", "max_queue", "", true]];
+  fin.innerHTML = `<tr><th></th>${cols}</tr>` + rows.map(([n, k, u, lb]) => `<tr><td>${n}</td>${RUNS.map((r, i) => {
+    const v = r.metrics[k]; return `<td>${v == null ? "–" : (Number.isInteger(v) ? v : v.toFixed(1))}${CMP(i) ? pct(v, RUNS[BASE].metrics[k], lb) : ""}</td>`;
+  }).join("")}</tr>`).join("");
+  if (RUNS[0].avg) {
+    $("avgsec").style.display = "";
+    const ar = [["Total travel (main)", "total_travel_h", true], ["Avg waiting / veh", "avg_wait_s", true], ["Vehicles arrived", "throughput", false],
+      ["Never entered (blocked)", "not_entered", true], ["Longest red, cars waiting (s)", "max_red_s", true]];
+    $("avgtbl").innerHTML = `<tr><th></th>${RUNS.map((r, i) => `<th style="color:${css(RUN_COL[i])}">${colName(i)}</th>`).join("")}</tr>` +
+      ar.map(([n, k, lb]) => `<tr><td>${n}</td>${RUNS.map((r, i) => {
+        const v = r.avg[k]; return `<td>${v == null ? "–" : v.toFixed(1)}${CMP(i) && RUNS[BASE].avg[k] != null ? pct(v, RUNS[BASE].avg[k], lb) : ""}</td>`;
+      }).join("")}</tr>`).join("");
+  }
+  const lg = [["#22c55e", "Green"], ["#facc15", "Amber"], ["#ef4444", "Red"]].map(([c, n]) => `<span><i class="dot" style="background:${c};border-radius:2px"></i>${n}</span>`).join("");
+  const vt = [["#e8edf3", "Car"], [night ? "#cbd5e1" : "#334155", "Two-wheeler"], ["#facc15", "Auto"], ["#dc2626", "Bus"], ["#60a5fa", "Truck"]]
+    .map(([c, n]) => `<span><i class="dot" style="background:${c}"></i>${n}</span>`).join("");
+  $("legend").innerHTML = lg + vt + `<span><i class="dot" style="background:transparent;border:2px solid ${PH_COLS[0]}"></i>Agent: active phase</span>
+    <span><i class="dot" style="background:rgba(248,113,113,.6)"></i>Queue at junction</span>`;
+}
+const short = s => s.replace(" (ours)", "").replace(" (city signals)", "");
+const colName = i => short(RUNS[i].label).split(" (")[0].replace("Independent DQN", "DQN").replace("Fixed-time", "Fixed").replace("RAPID-Light", "RAPID").replace("Advanced Max-Pressure", "Adv. MP");
+
+function live(t) {
+  const i = Math.min(Math.floor(t), T);
+  const rows = [["In network", "n", false, 0], ["Stopped", "halt", false, 0], ["Mean speed km/h", "spd", true, 1], ["Arrived", "arr", true, 0], ["Avg wait so far", "wait", false, 1]];
+  $("live").innerHTML = `<tr><th></th>${RUNS.map((r, j) => `<th style="color:${css(RUN_COL[j])}">${colName(j)}</th>`).join("")}</tr>` +
+    rows.map(([n, k, hb, d]) => `<tr><td>${n}</td>${RUNS.map((r, j) => { const v = r.kpi[k][i]; return `<td>${v.toFixed(d)}${CMP(j) && i > 30 ? pct(v, RUNS[BASE].kpi[k][i], !hb) : ""}</td>`; }).join("")}</tr>`).join("");
+  $("time").textContent = `${fmtT(t)} / ${fmtT(T)}`;
+}
+
+// charts
+function sizeCharts() {
+  ["c1", "c2", "jq", "scrubc"].forEach(id => { const c = $(id), r = c.getBoundingClientRect(), d = Math.min(2, devicePixelRatio || 1); c.width = Math.max(10, r.width * d); c.height = Math.max(10, r.height * d); });
+}
+function lineChart(id, series, t, opts = {}) {
+  const c = $(id); if (!c.offsetParent) return;
+  const g = c.getContext("2d"), d = Math.min(2, devicePixelRatio || 1), W = c.width / d, H = c.height / d;
+  g.setTransform(d, 0, 0, d, 0, 0); g.clearRect(0, 0, W, H);
+  const pad = opts.bare ? 2 : 4, top = opts.bare ? 2 : 6, bot = opts.bare ? 2 : 14;
+  let mx = 1; series.forEach(s => s.v.forEach(x => { if (x > mx) mx = x; }));
+  const n = Math.max(...series.map(s => s.v.length)), X = i => pad + (W - 2 * pad) * i / Math.max(1, n - 1), Y = v => H - bot - (H - top - bot) * v / mx;
+  if (!opts.bare) {
+    g.strokeStyle = css("--line"); g.lineWidth = 1; g.beginPath(); g.moveTo(pad, H - bot + .5); g.lineTo(W - pad, H - bot + .5); g.stroke();
+    g.fillStyle = css("--faint"); g.font = "10px system-ui"; g.textAlign = "left"; g.fillText(mx.toFixed(0), pad, top + 4);
+    g.textAlign = "right"; g.fillText(fmtT(opts.span || n), W - pad, H - 2);
+  }
+  series.forEach(s => {
+    g.strokeStyle = s.c; g.lineWidth = opts.bare ? 1.2 : 1.8; g.globalAlpha = opts.bare ? 0.55 : 1; g.beginPath();
+    const step = Math.max(1, Math.floor(s.v.length / (W * 1.5)));
+    for (let i = 0; i < s.v.length; i += step) { const x = X(i), y = Y(s.v[i]); i ? g.lineTo(x, y) : g.moveTo(x, y); }
+    g.stroke(); g.globalAlpha = 1;
+  });
+  if (t != null) { const x = X(t * (n - 1) / (opts.span || n - 1)); g.strokeStyle = css("--text"); g.globalAlpha = .5; g.lineWidth = 1; g.beginPath(); g.moveTo(x, 0); g.lineTo(x, H); g.stroke(); g.globalAlpha = 1; }
+}
+function charts(t) {
+  lineChart("c1", RUNS.map((r, i) => ({ v: r.kpi.halt, c: css(RUN_COL[i]) })), t, { span: T });
+  lineChart("c2", RUNS.map((r, i) => ({ v: r.kpi.wait, c: css(RUN_COL[i]) })), t, { span: T });
+  lineChart("scrubc", RUNS.map((r, i) => ({ v: r.kpi.n, c: css(RUN_COL[i]) })), null, { bare: true });
+  const sc = $("scrubc"), g = sc.getContext("2d"), d = Math.min(2, devicePixelRatio || 1), W = sc.width / d, H = sc.height / d;
+  g.fillStyle = css("--text"); g.globalAlpha = .9; g.fillRect(2 + (W - 4) * t / T - 1, 0, 2, H); g.globalAlpha = .08; g.fillRect(0, 0, 2 + (W - 4) * t / T, H); g.globalAlpha = 1;
+  if (sel) junctionCharts(t);
+}
+function showJunction() {
+  const j = $("junc");
+  if (!sel) { j.classList.remove("show"); return; }
+  j.classList.add("show"); $("side").classList.add("open");
+  const a = AG.find(x => x.id === sel);
+  $("jtitle").textContent = `Junction ${sel.length > 22 ? sel.slice(0, 20) + "…" : sel}`;
+  $("jinfo").innerHTML = `${a.lanes} incoming lanes · ${a.n} green phases · ${a.nb.length} neighbour agent${a.nb.length === 1 ? "" : "s"}<br>` +
+    a.dirs.map((d, i) => `<span style="color:${PH_COLS[i % PH_COLS.length]}">●</span> phase ${i}: ${d.join("+") || "–"}`).join(" &nbsp;");
+  const c = $("jph"); c.style.height = (RUNS.length * 18 + 16) + "px"; sizeCharts(); $("jph").width = $("jph").getBoundingClientRect().width * Math.min(2, devicePixelRatio || 1); $("jph").height = (RUNS.length * 18 + 16) * Math.min(2, devicePixelRatio || 1);
+}
+function junctionCharts(t) {
+  const series = RUNS.map((r, i) => ({ v: r.steps.q.map(row => row[r.agentIdx[sel]]), c: css(RUN_COL[i]) }));
+  lineChart("jq", series, t / META.decision_s, { span: series[0].v.length - 1 });
+  const c = $("jph"), g = c.getContext("2d"), d = Math.min(2, devicePixelRatio || 1), W = c.width / d, H = c.height / d;
+  g.setTransform(d, 0, 0, d, 0, 0); g.clearRect(0, 0, W, H);
+  g.font = "10px system-ui"; g.fillStyle = css("--faint"); g.fillText("phase served over time", 4, 10);
+  RUNS.forEach((r, ri) => {
+    const i = r.agentIdx[sel], n = r.steps.ph.length, y = 16 + ri * 18;
+    for (let k = 0; k < n; k++) { g.fillStyle = PH_COLS[r.steps.ph[k][i] % PH_COLS.length]; g.fillRect(4 + (W - 8) * k / n, y, Math.ceil((W - 8) / n) + .5, 12); }
+    g.fillStyle = css(RUN_COL[ri]); g.fillRect(0, y, 2, 12);
+  });
+  const x = 4 + (W - 8) * t / T; g.fillStyle = css("--text"); g.fillRect(x, 14, 1.5, H - 14);
+}
+
+// ---------------------------------------------------------------- modes
+function buildModes() {
+  const m = $("modes"); m.innerHTML = "";
+  const add = (label, col, fn, on) => { const b = document.createElement("button"); b.className = "seg" + (on ? " on" : ""); b.innerHTML = (col ? `<span class="dot" style="background:${col}"></span>` : "") + label; b.onclick = fn; m.appendChild(b); };
+  RUNS.forEach((r, i) => add(short(r.label), css(RUN_COL[i]), () => { mode = "single"; active = i; layoutViews(); buildModes(); }, mode === "single" && active === i));
+  if (RUNS.length > 1) add(RUNS.length > 2 ? "All side by side" : "Side by side", null, () => { mode = "split"; layoutViews(); buildModes(); }, mode === "split");
+}
+
+// ---------------------------------------------------------------- playback
+let t = 0, playing = true, last = performance.now(), speed = 4;
+function frame(now) {
+  const dt = Math.min(0.1, (now - last) / 1000); last = now;
+  if (playing) { t += dt * speed; if (t >= T) { t = T; playing = false; $("play").textContent = "↺"; } }
+  render(t);
+  if (!frame.n || now - frame.n > 120) { live(t); charts(t); $("scrub").value = Math.round(t / T * 1000); frame.n = now; }
+  if (recState) recDraw();
+  requestAnimationFrame(frame);
+}
+$("play").onclick = () => { if (t >= T) t = 0; playing = !playing; $("play").textContent = playing ? "❚❚" : "▶"; };
+$("speed").onchange = e => speed = +e.target.value;
+$("scrub").oninput = e => { t = e.target.value / 1000 * T; };
+$("fit").onclick = fit;
+$("jclose").onclick = () => { sel = null; showJunction(); };
+$("toggleSide").onclick = () => { if (innerWidth <= 900) $("side").classList.toggle("open"); else $("side").classList.toggle("hide"); sizeCharts(); };
+const setDirty = () => views.forEach(v => v.dirty = true);
+$("lNight").onchange = e => { night = e.target.checked; document.body.classList.toggle("day", !night); setDirty(); header(); buildModes(); layoutViews(); };
+$("l3d").onchange = e => { opt.b3d = e.target.checked; setDirty(); };
+$("lAgents").onchange = e => { opt.agents = e.target.checked; };
+$("lLabels").onchange = e => { opt.labels = e.target.checked; setDirty(); };
+$("lFollow").onchange = e => { opt.speedCol = e.target.checked; };
+if (!BD) { $("l3d").parentElement.style.display = "none"; }
+window.addEventListener("resize", () => { resize(); });
+window.addEventListener("keydown", e => {
+  if (e.target.tagName === "SELECT" || e.target.tagName === "INPUT" && e.target.type !== "range" && e.target.type !== "checkbox") return;
+  if (e.key === " ") { e.preventDefault(); $("play").click(); }
+  else if (e.key === "ArrowRight") t = Math.min(T, t + 10);
+  else if (e.key === "ArrowLeft") t = Math.max(0, t - 10);
+  else if (/^[1-9]$/.test(e.key) && +e.key <= RUNS.length) { mode = "single"; active = +e.key - 1; layoutViews(); buildModes(); }
+  else if (e.key === "0" && RUNS.length > 1) { mode = "split"; layoutViews(); buildModes(); }
+  else if (e.key === "+" || e.key === "=") { const s = $("speed"); s.selectedIndex = Math.min(s.options.length - 1, s.selectedIndex + 1); speed = +s.value; }
+  else if (e.key === "-") { const s = $("speed"); s.selectedIndex = Math.max(0, s.selectedIndex - 1); speed = +s.value; }
+  else if (e.key === "Escape") { sel = null; showJunction(); }
+});
+
+// ---------------------------------------------------------------- video recording (whole map area + caption)
+let recState = null;
+function recDraw() {
+  const { cv, g } = recState, d = views[0].dpr;
+  g.fillStyle = th().bg; g.fillRect(0, 0, cv.width, cv.height);
+  let x = 0; views.forEach(v => { g.drawImage(v.cv, x, 0); x += v.cv.width; });
+  g.fillStyle = "rgba(0,0,0,.55)"; g.fillRect(0, cv.height - 34 * d, cv.width, 34 * d);
+  g.fillStyle = "#fff"; g.font = `${600} ${13 * d}px system-ui`; g.textBaseline = "middle";
+  const cap = `${$("ttl").textContent}   ·   t = ${fmtT(t)}   ·   ` + views.map(v => `${short(RUNS[v.run].label)}: ${RUNS[v.run].kpi.halt[Math.min(Math.floor(t), T)]} stopped`).join("   |   ");
+  g.fillText(cap, 14 * d, cv.height - 17 * d);
+}
+$("rec").onclick = () => {
+  if (recState) { recState.mr.stop(); return; }
+  if (!window.MediaRecorder) { alert("Video recording needs Chrome, Edge or Firefox."); return; }
+  const cv = document.createElement("canvas"); cv.width = views.reduce((s, v) => s + v.cv.width, 0); cv.height = views[0].cv.height;
+  const g = cv.getContext("2d"), st = cv.captureStream(30);
+  const type = ["video/webm;codecs=vp9", "video/webm;codecs=vp8", "video/webm"].find(m => MediaRecorder.isTypeSupported(m)) || "";
+  const mr = new MediaRecorder(st, type ? { mimeType: type, videoBitsPerSecond: 8e6 } : {}), chunks = [];
+  mr.ondataavailable = e => e.data.size && chunks.push(e.data);
+  mr.onstop = () => {
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(chunks, { type: "video/webm" }));
+    a.download = `${META.map}_${META.scenario}_${mode}.webm`; a.click(); recState = null; $("rec").classList.remove("on"); $("rec").textContent = "● REC";
+  };
+  recState = { cv, g, mr }; mr.start(); $("rec").classList.add("on"); $("rec").textContent = "■ STOP";
+  if (!playing) $("play").click();
+};
+
+// ---------------------------------------------------------------- go
+header(); buildModes(); layoutViews(); fit();
+$("play").textContent = "❚❚";
+requestAnimationFrame(t0 => { last = t0; frame(t0); });
+window.__viz = { get t() { return t; }, set t(v) { t = v; }, pause() { playing = false; }, cam: () => cam, setCam(c) { Object.assign(cam, c); views.forEach(v => v.dirty = true); } };
+})();
+</script>
+</body>
+</html>

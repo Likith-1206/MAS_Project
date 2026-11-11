@@ -1,0 +1,61 @@
+{
+ "scales": {
+  "uniform": 0.654,
+  "asymmetric": 0.561,
+  "rush_hour": 0.631,
+  "corridor": 0.701
+ },
+ "ok": true,
+ "max_backlog": 0.02,
+ "n_seeds": 3,
+ "per_pattern": {
+  "uniform": {
+   "scale": 0.654,
+   "ok": true,
+   "max_backlog": 0.02,
+   "n_seeds": 3,
+   "pattern": "uniform",
+   "at_scale": {
+    "vehicles": 1489,
+    "backlog_frac": 0.013,
+    "mean_time_loss_s": 196.8
+   }
+  },
+  "asymmetric": {
+   "scale": 0.561,
+   "ok": true,
+   "max_backlog": 0.02,
+   "n_seeds": 3,
+   "pattern": "asymmetric",
+   "at_scale": {
+    "vehicles": 1309,
+    "backlog_frac": 0.012,
+    "mean_time_loss_s": 190.1
+   }
+  },
+  "rush_hour": {
+   "scale": 0.631,
+   "ok": true,
+   "max_backlog": 0.02,
+   "n_seeds": 3,
+   "pattern": "rush_hour",
+   "at_scale": {
+    "vehicles": 1461,
+    "backlog_frac": 0.012,
+    "mean_time_loss_s": 179.1
+   }
+  },
+  "corridor": {
+   "scale": 0.701,
+   "ok": true,
+   "max_backlog": 0.02,
+   "n_seeds": 3,
+   "pattern": "corridor",
+   "at_scale": {
+    "vehicles": 1607,
+    "backlog_frac": 0.015,
+    "mean_time_loss_s": 193.5
+   }
+  }
+ }
+}

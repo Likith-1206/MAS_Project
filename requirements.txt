@@ -1,0 +1,13 @@
+eclipse-sumo==1.27.1
+libsumo==1.27.1
+sumolib==1.27.1
+traci==1.27.1
+torch
+numpy
+pandas
+scipy
+matplotlib
+plotly
+streamlit>=1.50
+networkx
+pyproj

@@ -1,0 +1,1600 @@
+{
+  "n_edges": 1341,
+  "n_nodes": 599,
+  "n_tls": 28,
+  "n_controllable": 10,
+  "n_fixed": 18,
+  "bbox_m": [
+    2157,
+    2266
+  ],
+  "entry_edges": [
+    "-1094409771#1",
+    "-1094409779#1",
+    "-1094409788",
+    "-1094409791",
+    "-1094409793",
+    "-1094409795",
+    "-1094409796#1",
+    "-1094409797#1",
+    "-1094415621#1",
+    "-1094415622",
+    "-1094468213",
+    "-1094468217",
+    "-1094696325#1",
+    "-1094696335",
+    "-1094696337",
+    "-1095071197#1",
+    "-1095071205",
+    "-1095071207",
+    "-1095071211#1",
+    "-1095071213",
+    "-1095071215",
+    "-1095071217",
+    "-1095071218",
+    "-1095071219",
+    "-1095075498",
+    "-1095075503",
+    "-1095075504",
+    "-1095075515",
+    "-1095794726",
+    "-1095794733#1",
+    "-1095804287",
+    "-1095804296",
+    "-1095807914",
+    "-1095833676",
+    "-1095833677",
+    "-1095833680",
+    "-1095833683",
+    "-1095833684",
+    "-1095834107",
+    "-1095834209",
+    "-1095834210",
+    "-1095835266#1",
+    "-1095883213",
+    "-1095883214",
+    "-1095883215",
+    "-1095883216",
+    "-1095883217",
+    "-1095883218",
+    "-1118657553#4",
+    "-1124083565",
+    "-1341197739",
+    "-1341197740",
+    "-1343300246#4",
+    "-1368389076#1",
+    "-1370293983",
+    "-1490291370",
+    "-1490291392#1",
+    "-36954583#2",
+    "-36954623#2",
+    "-38540559#2",
+    "-38541470#2",
+    "-38541475#2",
+    "-38541511#9",
+    "-38541512",
+    "-38541550#2",
+    "-38541551#4",
+    "-410858848#1",
+    "1076405812",
+    "1076405815",
+    "1094415609",
+    "1094415613",
+    "1094468218",
+    "1094696324#0",
+    "1095075500#0",
+    "1095075507",
+    "1095833674",
+    "1095833675",
+    "1148406432#0",
+    "1150521633#0",
+    "1167942776",
+    "1182221973#0",
+    "1312956274#0",
+    "1323782722",
+    "1490291352#0",
+    "1492978679#0",
+    "1492978744",
+    "1546886820#0",
+    "23076927#0",
+    "358318632#0",
+    "363454312#0",
+    "36897656#0",
+    "36897665#0",
+    "36897689#0",
+    "36907510#0",
+    "36907541#0",
+    "38540557#0",
+    "38540603#0",
+    "38541466#0",
+    "38541526#0",
+    "410858858#0",
+    "54608291#0",
+    "778340897"
+  ],
+  "exit_edges": [
+    "-1094415609",
+    "-1094415613",
+    "-1094468218",
+    "-1094696324#1",
+    "-1095075500#0",
+    "-1095075507",
+    "-1095803438",
+    "-1095833674",
+    "-1095833675",
+    "-1150521633#1",
+    "-1167942776",
+    "-1490291352#0",
+    "-1492978679#1",
+    "-1492978744",
+    "-1546886820#0",
+    "-363454312#1",
+    "-36897656#0",
+    "-36897665#0",
+    "-36907510#0",
+    "-36907541#0",
+    "-38540603#0",
+    "-38541466#1",
+    "-38541526#0",
+    "-410858858#0",
+    "1054230460#0",
+    "1076405814",
+    "1094409771#0",
+    "1094409779#1",
+    "1094409788",
+    "1094409791",
+    "1094409793",
+    "1094409795",
+    "1094409796#1",
+    "1094409797#1",
+    "1094415621#1",
+    "1094415622",
+    "1094468213",
+    "1094468217",
+    "1094696325#0",
+    "1094696335",
+    "1094696337",
+    "1095071197#1",
+    "1095071205",
+    "1095071207",
+    "1095071211#1",
+    "1095071213",
+    "1095071215",
+    "1095071217",
+    "1095071218",
+    "1095071219",
+    "1095075498",
+    "1095075503",
+    "1095075504",
+    "1095075515",
+    "1095794726",
+    "1095794733#0",
+    "1095804287",
+    "1095804296",
+    "1095807914",
+    "1095833676",
+    "1095833677",
+    "1095833680",
+    "1095833683",
+    "1095833684",
+    "1095834107",
+    "1095834209",
+    "1095834210",
+    "1095835266#0",
+    "1095883213",
+    "1095883214",
+    "1095883215",
+    "1095883216",
+    "1095883217",
+    "1095883218",
+    "1118657553#4",
+    "1124083565",
+    "1207956701#8",
+    "1341197739",
+    "1341197740",
+    "1343300246#4",
+    "1368389076#1",
+    "1490291370",
+    "1490291392#1",
+    "160558221#7",
+    "36897658#16",
+    "36954583#2",
+    "36954623#2",
+    "38540559#2",
+    "38541470#2",
+    "38541475#2",
+    "38541511#8",
+    "38541512",
+    "38541550#2",
+    "38541551#4",
+    "391160931#18",
+    "410858848#0",
+    "458424042#2",
+    "654633930#0"
+  ],
+  "traffic_lights": [
+    {
+      "id": "10001161216",
+      "nodes": [],
+      "n_links": 4,
+      "controllable": false,
+      "x": 2070.8,
+      "y": 381.8,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "23076927#0": [
+          "23076927#0_0",
+          "23076927#0_1",
+          "23076927#0_2",
+          "23076927#0_3"
+        ]
+      },
+      "max_lanes_per_approach": 4,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGGG",
+          "duration": 79
+        },
+        {
+          "index": 1,
+          "state": "yyyy",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rrrr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "10121158806",
+      "nodes": [],
+      "n_links": 2,
+      "controllable": false,
+      "x": 2042.4,
+      "y": 1277.5,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "358318632#0": [
+          "358318632#0_0",
+          "358318632#0_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GG",
+          "duration": 79
+        },
+        {
+          "index": 1,
+          "state": "yy",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "11071026806",
+      "nodes": [],
+      "n_links": 1,
+      "controllable": false,
+      "x": 846.1,
+      "y": 1211.9,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "1192627829#0": [
+          "1192627829#0_0"
+        ]
+      },
+      "max_lanes_per_approach": 1,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "G",
+          "duration": 80
+        },
+        {
+          "index": 1,
+          "state": "y",
+          "duration": 5
+        },
+        {
+          "index": 2,
+          "state": "r",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "12421958514",
+      "nodes": [],
+      "n_links": 2,
+      "controllable": false,
+      "x": 861.9,
+      "y": 1212.0,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "36957712#10": [
+          "36957712#10_0",
+          "36957712#10_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GG",
+          "duration": 80
+        },
+        {
+          "index": 1,
+          "state": "yy",
+          "duration": 5
+        },
+        {
+          "index": 2,
+          "state": "rr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "12421958529",
+      "nodes": [],
+      "n_links": 2,
+      "controllable": false,
+      "x": 862.7,
+      "y": 1208.8,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "36957712#11": [
+          "36957712#11_0",
+          "36957712#11_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GG",
+          "duration": 80
+        },
+        {
+          "index": 1,
+          "state": "yy",
+          "duration": 5
+        },
+        {
+          "index": 2,
+          "state": "rr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "13078318824",
+      "nodes": [],
+      "n_links": 2,
+      "controllable": false,
+      "x": 1843.1,
+      "y": 1624.3,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "1148406432#3": [
+          "1148406432#3_0",
+          "1148406432#3_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GG",
+          "duration": 79
+        },
+        {
+          "index": 1,
+          "state": "yy",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "13078318825",
+      "nodes": [],
+      "n_links": 2,
+      "controllable": false,
+      "x": 1835.6,
+      "y": 1628.2,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "160558221#0": [
+          "160558221#0_0",
+          "160558221#0_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GG",
+          "duration": 79
+        },
+        {
+          "index": 1,
+          "state": "yy",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "13396931071",
+      "nodes": [],
+      "n_links": 1,
+      "controllable": false,
+      "x": 846.0,
+      "y": 1207.9,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "1192627829#1": [
+          "1192627829#1_0"
+        ]
+      },
+      "max_lanes_per_approach": 1,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "G",
+          "duration": 80
+        },
+        {
+          "index": 1,
+          "state": "y",
+          "duration": 5
+        },
+        {
+          "index": 2,
+          "state": "r",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "13447636789",
+      "nodes": [],
+      "n_links": 2,
+      "controllable": false,
+      "x": 2034.6,
+      "y": 1240.7,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "1182221973#0": [
+          "1182221973#0_0",
+          "1182221973#0_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GG",
+          "duration": 80
+        },
+        {
+          "index": 1,
+          "state": "yy",
+          "duration": 5
+        },
+        {
+          "index": 2,
+          "state": "rr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "2014710915",
+      "nodes": [],
+      "n_links": 2,
+      "controllable": false,
+      "x": 453.1,
+      "y": 2199.6,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "458424042#1": [
+          "458424042#1_0",
+          "458424042#1_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GG",
+          "duration": 79
+        },
+        {
+          "index": 1,
+          "state": "yy",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "347295433",
+      "nodes": [],
+      "n_links": 2,
+      "controllable": false,
+      "x": 900.9,
+      "y": 1161.2,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "150808471#0": [
+          "150808471#0_0",
+          "150808471#0_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GG",
+          "duration": 79
+        },
+        {
+          "index": 1,
+          "state": "yy",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "428853845",
+      "nodes": [],
+      "n_links": 3,
+      "controllable": false,
+      "x": 1474.7,
+      "y": 1686.6,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "1314308310": [
+          "1314308310_0",
+          "1314308310_1",
+          "1314308310_2"
+        ]
+      },
+      "max_lanes_per_approach": 3,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGG",
+          "duration": 79
+        },
+        {
+          "index": 1,
+          "state": "yyy",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rrr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "429230963",
+      "nodes": [],
+      "n_links": 2,
+      "controllable": false,
+      "x": 2081.4,
+      "y": 274.5,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 2,
+      "approaches": {
+        "-36897656#1": [
+          "-36897656#1_0"
+        ],
+        "36897656#0": [
+          "36897656#0_0"
+        ]
+      },
+      "max_lanes_per_approach": 1,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GG",
+          "duration": 80
+        },
+        {
+          "index": 1,
+          "state": "yy",
+          "duration": 5
+        },
+        {
+          "index": 2,
+          "state": "rr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "429726441",
+      "nodes": [],
+      "n_links": 1,
+      "controllable": false,
+      "x": 0.0,
+      "y": 459.8,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "36897689#0": [
+          "36897689#0_0"
+        ]
+      },
+      "max_lanes_per_approach": 1,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "G",
+          "duration": 79
+        },
+        {
+          "index": 1,
+          "state": "y",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "r",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "9629025771",
+      "nodes": [],
+      "n_links": 2,
+      "controllable": false,
+      "x": 1499.6,
+      "y": 1653.9,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "764500256#1": [
+          "764500256#1_0",
+          "764500256#1_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GG",
+          "duration": 79
+        },
+        {
+          "index": 1,
+          "state": "yy",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "9930001009",
+      "nodes": [],
+      "n_links": 2,
+      "controllable": false,
+      "x": 1474.8,
+      "y": 1657.1,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "36884561#7": [
+          "36884561#7_0",
+          "36884561#7_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GG",
+          "duration": 80
+        },
+        {
+          "index": 1,
+          "state": "yy",
+          "duration": 5
+        },
+        {
+          "index": 2,
+          "state": "rr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "cluster_10036422031_12114002202_12114002206_12138994485_#2more",
+      "nodes": [],
+      "n_links": 11,
+      "controllable": true,
+      "x": 2010.2,
+      "y": 1906.4,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 3,
+      "approaches": {
+        "-1368389076#1": [
+          "-1368389076#1_0"
+        ],
+        "1148406432#0": [
+          "1148406432#0_0",
+          "1148406432#0_1"
+        ],
+        "160558221#1": [
+          "160558221#1_0",
+          "160558221#1_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 4,
+      "green_phases": [
+        0,
+        2
+      ],
+      "n_green_phases": 2,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGggrrrGGGg",
+          "duration": 39
+        },
+        {
+          "index": 1,
+          "state": "yyyyrrrGyyy",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rrrrGGgGrrr",
+          "duration": 39
+        },
+        {
+          "index": 3,
+          "state": "rrrryyyGrrr",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "id": "cluster_10121158786_10121158787_10121158788_12139240707_#3more",
+      "nodes": [],
+      "n_links": 8,
+      "controllable": true,
+      "x": 954.2,
+      "y": 1769.7,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 3,
+      "approaches": {
+        "363477541#5": [
+          "363477541#5_0",
+          "363477541#5_1"
+        ],
+        "375950939#1": [
+          "375950939#1_0"
+        ],
+        "548524979#1": [
+          "548524979#1_0",
+          "548524979#1_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 4,
+      "green_phases": [
+        0,
+        2
+      ],
+      "n_green_phases": 2,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGgrrrGg",
+          "duration": 39
+        },
+        {
+          "index": 1,
+          "state": "yyyrrryy",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rrrGGGrr",
+          "duration": 39
+        },
+        {
+          "index": 3,
+          "state": "rrryyyrr",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "id": "cluster_10231033892_10231033893_11390080340_11390080341_#4more",
+      "nodes": [],
+      "n_links": 9,
+      "controllable": true,
+      "x": 1100.7,
+      "y": 1078.9,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 3,
+      "approaches": {
+        "1312956274#10": [
+          "1312956274#10_0",
+          "1312956274#10_1"
+        ],
+        "191031652#6": [
+          "191031652#6_0"
+        ],
+        "36907507#10": [
+          "36907507#10_0",
+          "36907507#10_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 6,
+      "green_phases": [
+        0,
+        2,
+        4
+      ],
+      "n_green_phases": 3,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGGrrrrrr",
+          "duration": 33
+        },
+        {
+          "index": 1,
+          "state": "yyyrrrrrr",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rrrrrrGGG",
+          "duration": 6
+        },
+        {
+          "index": 3,
+          "state": "rrrrrryyy",
+          "duration": 6
+        },
+        {
+          "index": 4,
+          "state": "rrrGGGrrr",
+          "duration": 33
+        },
+        {
+          "index": 5,
+          "state": "rrryyyrrr",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "id": "cluster_10978687898_13447636788",
+      "nodes": [],
+      "n_links": 2,
+      "controllable": false,
+      "x": 2027.2,
+      "y": 1246.8,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "391160931#2": [
+          "391160931#2_0",
+          "391160931#2_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GG",
+          "duration": 80
+        },
+        {
+          "index": 1,
+          "state": "yy",
+          "duration": 5
+        },
+        {
+          "index": 2,
+          "state": "rr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "cluster_11378925100_13396930899_13396930900_13396930933_#1more",
+      "nodes": [],
+      "n_links": 3,
+      "controllable": true,
+      "x": 750.3,
+      "y": 1073.8,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 2,
+      "approaches": {
+        "544757436#0": [
+          "544757436#0_0"
+        ],
+        "544757437#0": [
+          "544757437#0_0",
+          "544757437#0_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 4,
+      "green_phases": [
+        0,
+        2
+      ],
+      "n_green_phases": 2,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGr",
+          "duration": 39
+        },
+        {
+          "index": 1,
+          "state": "yyr",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rrG",
+          "duration": 39
+        },
+        {
+          "index": 3,
+          "state": "rry",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "id": "cluster_1636820409_294083513",
+      "nodes": [],
+      "n_links": 3,
+      "controllable": false,
+      "x": 899.6,
+      "y": 1172.2,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "150808482#0": [
+          "150808482#0_0",
+          "150808482#0_1",
+          "150808482#0_2"
+        ]
+      },
+      "max_lanes_per_approach": 3,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGG",
+          "duration": 79
+        },
+        {
+          "index": 1,
+          "state": "yyy",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rrr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "joinedS_10015684285_1636820456_1636820490_3755576616",
+      "nodes": [],
+      "n_links": 14,
+      "controllable": true,
+      "x": 310.7,
+      "y": 1714.7,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 6,
+      "approaches": {
+        "1323782720#1": [
+          "1323782720#1_0",
+          "1323782720#1_1"
+        ],
+        "150808475": [
+          "150808475_0",
+          "150808475_1"
+        ],
+        "36958057#1": [
+          "36958057#1_0",
+          "36958057#1_1"
+        ],
+        "372018372#0": [
+          "372018372#0_0",
+          "372018372#0_1"
+        ],
+        "454483792": [
+          "454483792_0",
+          "454483792_1"
+        ],
+        "760493329": [
+          "760493329_0",
+          "760493329_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 10,
+      "green_phases": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "n_green_phases": 5,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGrrrrrrrrrrrr",
+          "duration": 12
+        },
+        {
+          "index": 1,
+          "state": "yyrrrrrrrrrrrr",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rrGGrrrrrrrrrr",
+          "duration": 12
+        },
+        {
+          "index": 3,
+          "state": "rryyrrrrrrrrrr",
+          "duration": 6
+        },
+        {
+          "index": 4,
+          "state": "rrrrrrGGrrrrrr",
+          "duration": 12
+        },
+        {
+          "index": 5,
+          "state": "rrrrrryyrrrrrr",
+          "duration": 6
+        },
+        {
+          "index": 6,
+          "state": "rrrrrrrrGGrrrr",
+          "duration": 12
+        },
+        {
+          "index": 7,
+          "state": "rrrrrrrryyrrrr",
+          "duration": 6
+        },
+        {
+          "index": 8,
+          "state": "rrrrGGrrrrGGGG",
+          "duration": 12
+        },
+        {
+          "index": 9,
+          "state": "rrrryyrrrryyyy",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "id": "joinedS_10035532963_cluster_12129943985_5558684129",
+      "nodes": [],
+      "n_links": 4,
+      "controllable": true,
+      "x": 553.0,
+      "y": 1554.2,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 3,
+      "approaches": {
+        "142571618#1": [
+          "142571618#1_0"
+        ],
+        "36954621#5": [
+          "36954621#5_0"
+        ],
+        "38684970#12": [
+          "38684970#12_0",
+          "38684970#12_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 4,
+      "green_phases": [
+        0,
+        2
+      ],
+      "n_green_phases": 2,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GrGG",
+          "duration": 39
+        },
+        {
+          "index": 1,
+          "state": "Gryy",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "GGrr",
+          "duration": 39
+        },
+        {
+          "index": 3,
+          "state": "Gyrr",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "id": "joinedS_12134062487_249087971_9140200248_cluster_1087824452_1087824504_11420343270_11420343306_#2more_#1more",
+      "nodes": [],
+      "n_links": 17,
+      "controllable": true,
+      "x": 1452.9,
+      "y": 930.5,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 6,
+      "approaches": {
+        "1182221973#1": [
+          "1182221973#1_0",
+          "1182221973#1_1"
+        ],
+        "1182221973#10": [
+          "1182221973#10_0",
+          "1182221973#10_1"
+        ],
+        "23076927#8": [
+          "23076927#8_0",
+          "23076927#8_1",
+          "23076927#8_2",
+          "23076927#8_3"
+        ],
+        "234946738#4": [
+          "234946738#4_0",
+          "234946738#4_1"
+        ],
+        "38540557#9": [
+          "38540557#9_0"
+        ],
+        "764332432#0": [
+          "764332432#0_0",
+          "764332432#0_1",
+          "764332432#0_2"
+        ]
+      },
+      "max_lanes_per_approach": 4,
+      "n_phases": 4,
+      "green_phases": [
+        0,
+        2
+      ],
+      "n_green_phases": 2,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGGrrrrrGGGGGGGGG",
+          "duration": 39
+        },
+        {
+          "index": 1,
+          "state": "GGGrrrrryyyyyyGGG",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "GGGGGGGGrrrrrrGGG",
+          "duration": 39
+        },
+        {
+          "index": 3,
+          "state": "GGGyyyyyrrrrrrGGG",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "id": "joinedS_12421958517_cluster_12421958516_12421958518_13396930892_13396931009_#1more",
+      "nodes": [],
+      "n_links": 8,
+      "controllable": true,
+      "x": 722.8,
+      "y": 1206.5,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 3,
+      "approaches": {
+        "1278548486#0": [
+          "1278548486#0_0",
+          "1278548486#0_1"
+        ],
+        "150808482#5": [
+          "150808482#5_0",
+          "150808482#5_1"
+        ],
+        "38684970#2": [
+          "38684970#2_0",
+          "38684970#2_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 4,
+      "green_phases": [
+        0,
+        2
+      ],
+      "n_green_phases": 2,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGrrrGGG",
+          "duration": 39
+        },
+        {
+          "index": 1,
+          "state": "GGrrryyy",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "GGGGGrrr",
+          "duration": 39
+        },
+        {
+          "index": 3,
+          "state": "GGyyyrrr",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "id": "joinedS_1560168999_1636623257_286681888_cluster_11065716854_11065716857_#1more",
+      "nodes": [],
+      "n_links": 13,
+      "controllable": true,
+      "x": 702.8,
+      "y": 1803.4,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 8,
+      "approaches": {
+        "-1343300246#1": [
+          "-1343300246#1_0"
+        ],
+        "-1343300246#3": [
+          "-1343300246#3_0"
+        ],
+        "1343300246#1": [
+          "1343300246#1_0"
+        ],
+        "1343300252#0": [
+          "1343300252#0_0"
+        ],
+        "1353661357#7": [
+          "1353661357#7_0",
+          "1353661357#7_1"
+        ],
+        "1416782255": [
+          "1416782255_0"
+        ],
+        "142571618#7": [
+          "142571618#7_0"
+        ],
+        "36957700#0-AddedOffRampEdge": [
+          "36957700#0-AddedOffRampEdge_0",
+          "36957700#0-AddedOffRampEdge_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 10,
+      "green_phases": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "n_green_phases": 5,
+      "phases": [
+        {
+          "index": 0,
+          "state": "Grrrrrrrrrrrr",
+          "duration": 12
+        },
+        {
+          "index": 1,
+          "state": "yrrrrrrrrrrrr",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rGGrrrrrrrrrr",
+          "duration": 12
+        },
+        {
+          "index": 3,
+          "state": "ryyrrrrrrrrrr",
+          "duration": 6
+        },
+        {
+          "index": 4,
+          "state": "rrrGGrrrrGGrr",
+          "duration": 12
+        },
+        {
+          "index": 5,
+          "state": "rrrGyrrrryyrr",
+          "duration": 6
+        },
+        {
+          "index": 6,
+          "state": "rrrGrGGrrrrrr",
+          "duration": 12
+        },
+        {
+          "index": 7,
+          "state": "rrrGryyrrrrrr",
+          "duration": 6
+        },
+        {
+          "index": 8,
+          "state": "rrrGrrrGGrrGG",
+          "duration": 12
+        },
+        {
+          "index": 9,
+          "state": "rrryrrryyrryy",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "id": "joinedS_679993212_cluster_12260962526_12430010319_12523047692_13659423696_#4more",
+      "nodes": [],
+      "n_links": 12,
+      "controllable": true,
+      "x": 280.6,
+      "y": 1118.6,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 4,
+      "approaches": {
+        "1109960115#0": [
+          "1109960115#0_0"
+        ],
+        "1205142214#0": [
+          "1205142214#0_0",
+          "1205142214#0_1"
+        ],
+        "150808476#3": [
+          "150808476#3_0",
+          "150808476#3_1"
+        ],
+        "150808476#4": [
+          "150808476#4_0",
+          "150808476#4_1"
+        ]
+      },
+      "max_lanes_per_approach": 2,
+      "n_phases": 4,
+      "green_phases": [
+        0,
+        2
+      ],
+      "n_green_phases": 2,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGGGgGGggrrr",
+          "duration": 39
+        },
+        {
+          "index": 1,
+          "state": "GGGyyyyyyrrr",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "GGGrrrrrrGGg",
+          "duration": 39
+        },
+        {
+          "index": 3,
+          "state": "GGGrrrrrryyy",
+          "duration": 6
+        }
+      ]
+    }
+  ],
+  "problems": [
+    {
+      "level": "info",
+      "message": "18 traffic light(s) with fewer than 2 green phases stay on their fixed program."
+    }
+  ],
+  "ok": true,
+  "source": "/tmp/claude-0/-home-user/815ef46d-d76a-5cfe-9b63-ac0fc2c38322/scratchpad/osm_in/bangalore.osm",
+  "bbox": null,
+  "net_file": "/tmp/claude-0/-home-user/815ef46d-d76a-5cfe-9b63-ac0fc2c38322/scratchpad/repo/MAS/traffic_marl/maps/bangalore/net.net.xml"
+}

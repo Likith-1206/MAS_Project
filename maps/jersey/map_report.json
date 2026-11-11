@@ -1,0 +1,885 @@
+{
+  "n_edges": 914,
+  "n_nodes": 377,
+  "n_tls": 11,
+  "n_controllable": 10,
+  "n_fixed": 1,
+  "bbox_m": [
+    5645,
+    4218
+  ],
+  "entry_edges": [
+    "-1071943452",
+    "-11718558#1",
+    "-11722779",
+    "-11722942",
+    "-11724630",
+    "-11725742",
+    "-11725859#15",
+    "-11726696",
+    "-11729030",
+    "-11733126#2",
+    "-11733165#3",
+    "-11733608",
+    "-11735442#1",
+    "-11739903#5",
+    "-11741657#6",
+    "-11742686#1",
+    "-11745668#1",
+    "-11752254#1",
+    "-11753264#3",
+    "-11753382#1",
+    "-11754804",
+    "-11757417#1",
+    "-11758765#3",
+    "-1375494845#6",
+    "-1380463407",
+    "-1380486277#1",
+    "-1446194769",
+    "-1449552226",
+    "-1449552236",
+    "-1449552240",
+    "-1504752078",
+    "-180866051",
+    "-180866053#4",
+    "-180867956#1",
+    "-180868945",
+    "-180868946",
+    "-182913848",
+    "-182913857",
+    "-195492398",
+    "-291018522",
+    "-291018524",
+    "-296977552#1",
+    "-296977554",
+    "-31845846#1",
+    "-31845893#2",
+    "-31845923#2",
+    "-31846217",
+    "-33067039#13",
+    "-444466423#1",
+    "-644867941",
+    "-644977761#2",
+    "-650593004#2",
+    "-680877198#6",
+    "-699866264#1",
+    "-722496737",
+    "-722496738#1",
+    "-723172169",
+    "-723478961#0",
+    "-728330367#10",
+    "-730969422",
+    "-741850267#2",
+    "-756942066#2",
+    "-788883378",
+    "11723579",
+    "11725859#0",
+    "11726823",
+    "11727557",
+    "11733732#0",
+    "11735442#0",
+    "11738720",
+    "11739715#0",
+    "11739903#0",
+    "11742686#0",
+    "11745668#0",
+    "11746545#0",
+    "11752359",
+    "11753264#0",
+    "11759304",
+    "11759885",
+    "1218604077#0",
+    "1381577592",
+    "1449552235#0",
+    "1452032740#0",
+    "180867954",
+    "182913850#0",
+    "182913852",
+    "182913855",
+    "195492385#0",
+    "195492403",
+    "265875430#0",
+    "296977552#0",
+    "31845870",
+    "31845923#3",
+    "31846191",
+    "31846220",
+    "31846222",
+    "644977761#0",
+    "657868480#0",
+    "661940182#0",
+    "686971413#0",
+    "723478961#1",
+    "730190256#0",
+    "730969447#0",
+    "842875693",
+    "974062130#1"
+  ],
+  "exit_edges": [
+    "-11723579",
+    "-11725859#0",
+    "-11726823",
+    "-11727557",
+    "-11733732#3",
+    "-11735442#0",
+    "-11738720",
+    "-11739715#0",
+    "-11739903#0",
+    "-11742686#0",
+    "-11745668#0",
+    "-11746545#8",
+    "-11752359",
+    "-11753264#1",
+    "-11759304",
+    "-11759885",
+    "-1218604077#1",
+    "-1381577592",
+    "-1449552235#0",
+    "-1452032740#0",
+    "-180867954",
+    "-182913850#0",
+    "-182913852",
+    "-182913855",
+    "-195492385#1",
+    "-195492403",
+    "-296977552#0",
+    "-31845870",
+    "-31845923#3",
+    "-31846191",
+    "-31846220",
+    "-31846222",
+    "-644977761#0",
+    "-657868480#3",
+    "-661940182#0",
+    "-686971413#0",
+    "-723478961#1",
+    "-730190256#0",
+    "-730969447#0",
+    "-842875693",
+    "1071943452",
+    "11718558#1",
+    "11722779",
+    "11722942",
+    "11724630",
+    "11725742",
+    "11725859#11",
+    "11726696",
+    "11729030",
+    "11733126#2",
+    "11733165#3",
+    "11733608",
+    "11735442#1",
+    "11739903#5",
+    "11741657#6",
+    "11742686#1",
+    "11745668#1",
+    "11752254#1",
+    "11753264#2",
+    "11753382#0",
+    "11754804",
+    "11757417#1",
+    "11758765#2",
+    "1375494845#6",
+    "1380463407",
+    "1380486277#0",
+    "1446194769",
+    "1449552226",
+    "1449552235#1",
+    "1449552240",
+    "1504752078",
+    "180866051",
+    "180866053#4",
+    "180867956#1",
+    "180868945",
+    "180868946",
+    "182913848",
+    "182913857",
+    "195492398",
+    "265875433#5",
+    "291018522",
+    "291018524",
+    "296977552#1",
+    "296977554",
+    "31845846#1",
+    "31845893#1",
+    "31845923#2",
+    "31846217",
+    "33067039#13",
+    "444466423#1",
+    "644867941",
+    "644977761#2",
+    "650593004#0",
+    "680877198#6",
+    "699866264#0",
+    "722496737",
+    "722496738#0",
+    "723172169",
+    "723478961#0",
+    "728298655",
+    "728330367#7",
+    "730969422",
+    "741850267#2",
+    "756942066#2",
+    "788883378",
+    "974062130#0"
+  ],
+  "traffic_lights": [
+    {
+      "id": "104960131",
+      "nodes": [],
+      "n_links": 16,
+      "controllable": true,
+      "x": 1477.9,
+      "y": 1706.7,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 4,
+      "approaches": {
+        "-1504752078": [
+          "-1504752078_0"
+        ],
+        "-33067039#13": [
+          "-33067039#13_0"
+        ],
+        "11738720": [
+          "11738720_0"
+        ],
+        "33067039#12": [
+          "33067039#12_0"
+        ]
+      },
+      "max_lanes_per_approach": 1,
+      "n_phases": 4,
+      "green_phases": [
+        0,
+        2
+      ],
+      "n_green_phases": 2,
+      "phases": [
+        {
+          "index": 0,
+          "state": "rrrrGGggrrrrGGgg",
+          "duration": 40
+        },
+        {
+          "index": 1,
+          "state": "rrrryyyyrrrryyyy",
+          "duration": 5
+        },
+        {
+          "index": 2,
+          "state": "GGggrrrrGGggrrrr",
+          "duration": 40
+        },
+        {
+          "index": 3,
+          "state": "yyyyrrrryyyyrrrr",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "104982544",
+      "nodes": [],
+      "n_links": 16,
+      "controllable": true,
+      "x": 3231.2,
+      "y": 2350.4,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 4,
+      "approaches": {
+        "-11725859#5": [
+          "-11725859#5_0"
+        ],
+        "-11733812#16": [
+          "-11733812#16_0"
+        ],
+        "11725859#4": [
+          "11725859#4_0"
+        ],
+        "11733812#11": [
+          "11733812#11_0"
+        ]
+      },
+      "max_lanes_per_approach": 1,
+      "n_phases": 4,
+      "green_phases": [
+        0,
+        2
+      ],
+      "n_green_phases": 2,
+      "phases": [
+        {
+          "index": 0,
+          "state": "rrrrGGggrrrrGGgg",
+          "duration": 41
+        },
+        {
+          "index": 1,
+          "state": "rrrryyyyrrrryyyy",
+          "duration": 4
+        },
+        {
+          "index": 2,
+          "state": "GGggrrrrGGggrrrr",
+          "duration": 41
+        },
+        {
+          "index": 3,
+          "state": "yyyyrrrryyyyrrrr",
+          "duration": 4
+        }
+      ]
+    },
+    {
+      "id": "105038357",
+      "nodes": [],
+      "n_links": 9,
+      "controllable": true,
+      "x": 2561.6,
+      "y": 3824.8,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 3,
+      "approaches": {
+        "-11747779#1": [
+          "-11747779#1_0"
+        ],
+        "-1452032738#0": [
+          "-1452032738#0_0"
+        ],
+        "1452032740#0": [
+          "1452032740#0_0"
+        ]
+      },
+      "max_lanes_per_approach": 1,
+      "n_phases": 4,
+      "green_phases": [
+        0,
+        2
+      ],
+      "n_green_phases": 2,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GggrrrGGg",
+          "duration": 41
+        },
+        {
+          "index": 1,
+          "state": "yyyrrrGyy",
+          "duration": 4
+        },
+        {
+          "index": 2,
+          "state": "rrrGGgGrr",
+          "duration": 41
+        },
+        {
+          "index": 3,
+          "state": "rrryyyGrr",
+          "duration": 4
+        }
+      ]
+    },
+    {
+      "id": "105038375",
+      "nodes": [],
+      "n_links": 9,
+      "controllable": true,
+      "x": 2490.9,
+      "y": 3254.4,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 3,
+      "approaches": {
+        "-1452032756#1": [
+          "-1452032756#1_0"
+        ],
+        "1452032738#4": [
+          "1452032738#4_0"
+        ],
+        "1452032748#1": [
+          "1452032748#1_0"
+        ]
+      },
+      "max_lanes_per_approach": 1,
+      "n_phases": 4,
+      "green_phases": [
+        0,
+        2
+      ],
+      "n_green_phases": 2,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGgGggrrr",
+          "duration": 41
+        },
+        {
+          "index": 1,
+          "state": "Gyyyyyrrr",
+          "duration": 4
+        },
+        {
+          "index": 2,
+          "state": "GrrrrrGGg",
+          "duration": 41
+        },
+        {
+          "index": 3,
+          "state": "Grrrrryyy",
+          "duration": 4
+        }
+      ]
+    },
+    {
+      "id": "105055856",
+      "nodes": [],
+      "n_links": 18,
+      "controllable": true,
+      "x": 4410.1,
+      "y": 1744.8,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 4,
+      "approaches": {
+        "-1380463398": [
+          "-1380463398_0",
+          "-1380463398_1"
+        ],
+        "-1380463406": [
+          "-1380463406_0",
+          "-1380463406_1",
+          "-1380463406_2"
+        ],
+        "1380463399#3": [
+          "1380463399#3_0"
+        ],
+        "1380463405": [
+          "1380463405_0",
+          "1380463405_1",
+          "1380463405_2"
+        ]
+      },
+      "max_lanes_per_approach": 3,
+      "n_phases": 8,
+      "green_phases": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "n_green_phases": 4,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGGrrrrrrGGGrrrrrr",
+          "duration": 29
+        },
+        {
+          "index": 1,
+          "state": "yyyrrrrrryyyrrrrrr",
+          "duration": 5
+        },
+        {
+          "index": 2,
+          "state": "rrrGGrrrrrrrGGrrrr",
+          "duration": 6
+        },
+        {
+          "index": 3,
+          "state": "rrryyrrrrrrryyrrrr",
+          "duration": 5
+        },
+        {
+          "index": 4,
+          "state": "rrrrrGGggrrrrrGGgg",
+          "duration": 29
+        },
+        {
+          "index": 5,
+          "state": "rrrrryyggrrrrryygg",
+          "duration": 5
+        },
+        {
+          "index": 6,
+          "state": "rrrrrrrGGrrrrrrrGG",
+          "duration": 6
+        },
+        {
+          "index": 7,
+          "state": "rrrrrrryyrrrrrrryy",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "105114425",
+      "nodes": [],
+      "n_links": 16,
+      "controllable": true,
+      "x": 2113.4,
+      "y": 3209.8,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 4,
+      "approaches": {
+        "-1452032748#0": [
+          "-1452032748#0_0"
+        ],
+        "-741850266#10": [
+          "-741850266#10_0"
+        ],
+        "729890565#1": [
+          "729890565#1_0"
+        ],
+        "741850266#8": [
+          "741850266#8_0"
+        ]
+      },
+      "max_lanes_per_approach": 1,
+      "n_phases": 4,
+      "green_phases": [
+        0,
+        2
+      ],
+      "n_green_phases": 2,
+      "phases": [
+        {
+          "index": 0,
+          "state": "rrrrGGggrrrrGGgg",
+          "duration": 42
+        },
+        {
+          "index": 1,
+          "state": "rrrryyyyrrrryyyy",
+          "duration": 3
+        },
+        {
+          "index": 2,
+          "state": "GGggrrrrGGggrrrr",
+          "duration": 42
+        },
+        {
+          "index": 3,
+          "state": "yyyyrrrryyyyrrrr",
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "id": "105169321",
+      "nodes": [],
+      "n_links": 18,
+      "controllable": true,
+      "x": 4870.3,
+      "y": 2655.7,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 4,
+      "approaches": {
+        "-1380486277#1": [
+          "-1380486277#1_0",
+          "-1380486277#1_1"
+        ],
+        "1353135537": [
+          "1353135537_0",
+          "1353135537_1",
+          "1353135537_2"
+        ],
+        "1380468675": [
+          "1380468675_0",
+          "1380468675_1",
+          "1380468675_2"
+        ],
+        "1380486279": [
+          "1380486279_0",
+          "1380486279_1",
+          "1380486279_2"
+        ]
+      },
+      "max_lanes_per_approach": 3,
+      "n_phases": 8,
+      "green_phases": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "n_green_phases": 4,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGGrrrrrrGGGrrrrrr",
+          "duration": 29
+        },
+        {
+          "index": 1,
+          "state": "yyyrrrrrryyyrrrrrr",
+          "duration": 5
+        },
+        {
+          "index": 2,
+          "state": "rrrGGrrrrrrrGGrrrr",
+          "duration": 6
+        },
+        {
+          "index": 3,
+          "state": "rrryyrrrrrrryyrrrr",
+          "duration": 5
+        },
+        {
+          "index": 4,
+          "state": "rrrrrGGrrrrrrrGGgg",
+          "duration": 29
+        },
+        {
+          "index": 5,
+          "state": "rrrrryyrrrrrrryygg",
+          "duration": 5
+        },
+        {
+          "index": 6,
+          "state": "rrrrrrrGGrrrrrrrGG",
+          "duration": 6
+        },
+        {
+          "index": 7,
+          "state": "rrrrrrryyrrrrrrryy",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "105261435",
+      "nodes": [],
+      "n_links": 16,
+      "controllable": true,
+      "x": 1649.0,
+      "y": 3156.3,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 4,
+      "approaches": {
+        "-1350085643#0": [
+          "-1350085643#0_0"
+        ],
+        "-730190256#6": [
+          "-730190256#6_0"
+        ],
+        "11756524#0": [
+          "11756524#0_0"
+        ],
+        "730190256#1": [
+          "730190256#1_0"
+        ]
+      },
+      "max_lanes_per_approach": 1,
+      "n_phases": 4,
+      "green_phases": [
+        0,
+        2
+      ],
+      "n_green_phases": 2,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGggrrrrGGggrrrr",
+          "duration": 41
+        },
+        {
+          "index": 1,
+          "state": "yyyyrrrryyyyrrrr",
+          "duration": 4
+        },
+        {
+          "index": 2,
+          "state": "rrrrGGggrrrrGGgg",
+          "duration": 41
+        },
+        {
+          "index": 3,
+          "state": "rrrryyyyrrrryyyy",
+          "duration": 4
+        }
+      ]
+    },
+    {
+      "id": "12856674913",
+      "nodes": [],
+      "n_links": 1,
+      "controllable": false,
+      "x": 2194.0,
+      "y": 3866.7,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 1,
+      "approaches": {
+        "-11739715#0": [
+          "-11739715#0_0"
+        ]
+      },
+      "max_lanes_per_approach": 1,
+      "n_phases": 3,
+      "green_phases": [
+        0
+      ],
+      "n_green_phases": 1,
+      "phases": [
+        {
+          "index": 0,
+          "state": "G",
+          "duration": 82
+        },
+        {
+          "index": 1,
+          "state": "y",
+          "duration": 3
+        },
+        {
+          "index": 2,
+          "state": "r",
+          "duration": 5
+        }
+      ]
+    },
+    {
+      "id": "cluster_12207982933_12207982938_13179603402_13179603403_#2more",
+      "nodes": [],
+      "n_links": 11,
+      "controllable": true,
+      "x": 4767.0,
+      "y": 3731.0,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 3,
+      "approaches": {
+        "1247718822": [
+          "1247718822_0",
+          "1247718822_1",
+          "1247718822_2",
+          "1247718822_3"
+        ],
+        "1319139616#1": [
+          "1319139616#1_0",
+          "1319139616#1_1"
+        ],
+        "265875438#5": [
+          "265875438#5_0"
+        ]
+      },
+      "max_lanes_per_approach": 4,
+      "n_phases": 4,
+      "green_phases": [
+        0,
+        2
+      ],
+      "n_green_phases": 2,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGggrrrGGGg",
+          "duration": 39
+        },
+        {
+          "index": 1,
+          "state": "yyyyrrrGyyy",
+          "duration": 6
+        },
+        {
+          "index": 2,
+          "state": "rrrrGGgGrrr",
+          "duration": 39
+        },
+        {
+          "index": 3,
+          "state": "rrrryyyGrrr",
+          "duration": 6
+        }
+      ]
+    },
+    {
+      "id": "joinedS_105186869_12776966738_cluster_12776966742_2714854426_2714854489_353489604",
+      "nodes": [],
+      "n_links": 20,
+      "controllable": true,
+      "x": 3859.5,
+      "y": 3180.9,
+      "lon": null,
+      "lat": null,
+      "n_approaches": 8,
+      "approaches": {
+        "-11747779#15": [
+          "-11747779#15_0"
+        ],
+        "-11747779#16": [
+          "-11747779#16_0"
+        ],
+        "-11747779#17": [
+          "-11747779#17_0"
+        ],
+        "11747779#14": [
+          "11747779#14_0"
+        ],
+        "11747779#15": [
+          "11747779#15_0"
+        ],
+        "11747779#16": [
+          "11747779#16_0"
+        ],
+        "265875439#8": [
+          "265875439#8_0"
+        ],
+        "31587643#0": [
+          "31587643#0_0"
+        ]
+      },
+      "max_lanes_per_approach": 1,
+      "n_phases": 5,
+      "green_phases": [
+        0,
+        2
+      ],
+      "n_green_phases": 2,
+      "phases": [
+        {
+          "index": 0,
+          "state": "GGGGrrrrGGggrrrrGGgg",
+          "duration": 42
+        },
+        {
+          "index": 1,
+          "state": "yGGyrrrryyyyrrrryyyy",
+          "duration": 3
+        },
+        {
+          "index": 2,
+          "state": "rGGrGGggrrrrGGggrrrr",
+          "duration": 41
+        },
+        {
+          "index": 3,
+          "state": "ryyryyyyrrrryyyyrrrr",
+          "duration": 3
+        },
+        {
+          "index": 4,
+          "state": "rrrrrrrrrrrrrrrrrrrr",
+          "duration": 1
+        }
+      ]
+    }
+  ],
+  "problems": [
+    {
+      "level": "info",
+      "message": "1 traffic light(s) with fewer than 2 green phases stay on their fixed program."
+    }
+  ],
+  "ok": true,
+  "source": "/tmp/claude-0/-home-user/815ef46d-d76a-5cfe-9b63-ac0fc2c38322/scratchpad/osm_in/jersey.osm",
+  "bbox": null,
+  "net_file": "/tmp/claude-0/-home-user/815ef46d-d76a-5cfe-9b63-ac0fc2c38322/scratchpad/repo/MAS/traffic_marl/maps/jersey/net.net.xml"
+}

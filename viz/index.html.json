@@ -1,0 +1,693 @@
+[
+ {
+  "map": "nyc16",
+  "file": "nyc16_rush_hour_s9001.html",
+  "meta": {
+   "map": "nyc16",
+   "title": "New York",
+   "osm": null,
+   "scenario": "rush_hour",
+   "seed": 9001,
+   "traffic": "mixed",
+   "shown": "chosen",
+   "avg_episodes": 0,
+   "fleet": "india",
+   "demand_scale": 1.003,
+   "n_trips": 761,
+   "n_agents": 15,
+   "lefthand": false,
+   "controllers": [
+    "rapid",
+    "rapid_multicity",
+    "independent",
+    "mappo",
+    "fixed_program"
+   ],
+   "label": "RAPID-Light (final) vs RAPID-Light multi-city vs Independent DQN vs MAPPO vs Fixed-time (city signals)",
+   "models": {
+    "rapid": "results/nyc16/rapid_v2_mixed/rapid2_mixedtrained_s0.pt",
+    "rapid_multicity": "results/multicity/rapid_multicity_s0.pt",
+    "independent": "models/nyc16/independent_s0.pt",
+    "mappo": "models/nyc16/mappo_s0.pt",
+    "fixed_program": null
+   },
+   "episode_s": 1200,
+   "decision_s": 5,
+   "yellow_s": 2,
+   "agent_order": [
+    "cluster_10081023579_10081023580_10081023581_10081023583_#1more",
+    "cluster_10081023582_10081023584_10081023585_10081023587_#1more",
+    "cluster_10081023586_10083107638_10083107639_10083107640_#1more",
+    "cluster_10081023589_10081023590_10081023591_10081023592_#1more",
+    "cluster_10081023593_10081023594_10081023595_10081023596_#1more",
+    "cluster_10081023598_10081023600_42860603",
+    "cluster_10081023599_10083107647_10083107648_10083107649_#1more",
+    "cluster_10081023602_10081023604_10081023605_10081023607_#1more",
+    "cluster_10081023606_10081023608_10081023609_10081023611_#1more",
+    "cluster_10081023610_10083107653_10083107654_10083107655_#1more",
+    "cluster_10083107634_10083107635_10083107636_10083107637_#1more",
+    "cluster_10083107641_10083107642_10083107643_10083107644_#1more",
+    "cluster_10083107656_10083107657_10083107658_10083107659_#1more",
+    "cluster_10084797151_10084797152_10084797153_10084797154_#1more",
+    "cluster_10084797155_10084797156_10084797157_10084797158_#1more"
+   ],
+   "created": "2026-11-11T22:16:09"
+  },
+  "runs": [
+   {
+    "name": "rapid",
+    "label": "RAPID-Light (final)",
+    "metrics": {
+     "avg_wait_s": 6.53,
+     "avg_queue": 0.28,
+     "max_queue": 9.0,
+     "throughput": 652.0,
+     "total_travel_h": 20.16,
+     "avg_trip_s": 100.34,
+     "in_network": 108.0,
+     "departed": 760.0,
+     "not_entered": 1.0,
+     "max_red_s": 50.0,
+     "starvation_viol": 0.0
+    }
+   },
+   {
+    "name": "rapid_multicity",
+    "label": "RAPID-Light multi-city",
+    "metrics": {
+     "avg_wait_s": 9.14,
+     "avg_queue": 0.39,
+     "max_queue": 13.0,
+     "throughput": 644.0,
+     "total_travel_h": 20.83,
+     "avg_trip_s": 103.72,
+     "in_network": 116.0,
+     "departed": 760.0,
+     "not_entered": 1.0,
+     "max_red_s": 60.0,
+     "starvation_viol": 0.0
+    }
+   },
+   {
+    "name": "independent",
+    "label": "Independent DQN",
+    "metrics": {
+     "avg_wait_s": 6.01,
+     "avg_queue": 0.25,
+     "max_queue": 6.0,
+     "throughput": 654.0,
+     "total_travel_h": 19.92,
+     "avg_trip_s": 99.49,
+     "in_network": 105.0,
+     "departed": 759.0,
+     "not_entered": 2.0,
+     "max_red_s": 35.0,
+     "starvation_viol": 0.0
+    }
+   },
+   {
+    "name": "mappo",
+    "label": "MAPPO",
+    "metrics": {
+     "avg_wait_s": 24.25,
+     "avg_queue": 1.01,
+     "max_queue": 15.0,
+     "throughput": 585.0,
+     "total_travel_h": 29.62,
+     "avg_trip_s": 147.98,
+     "in_network": 164.0,
+     "departed": 749.0,
+     "not_entered": 12.0,
+     "max_red_s": 150.0,
+     "starvation_viol": 3.0
+    }
+   },
+   {
+    "name": "fixed_program",
+    "label": "Fixed-time (city signals)",
+    "metrics": {
+     "avg_wait_s": 60.38,
+     "avg_queue": 2.5,
+     "max_queue": 15.0,
+     "throughput": 599.0,
+     "total_travel_h": 32.04,
+     "avg_trip_s": 167.49,
+     "in_network": 145.0,
+     "departed": 744.0,
+     "not_entered": 17.0,
+     "max_red_s": null,
+     "starvation_viol": null
+    }
+   }
+  ]
+ },
+ {
+  "map": "pune_test",
+  "file": "pune_test_rush_hour_s9001.html",
+  "meta": {
+   "map": "pune_test",
+   "title": "Pune (unseen)",
+   "osm": null,
+   "scenario": "rush_hour",
+   "seed": 9001,
+   "traffic": "mixed",
+   "shown": "chosen",
+   "avg_episodes": 0,
+   "fleet": "india",
+   "demand_scale": 0.631,
+   "n_trips": 1480,
+   "n_agents": 10,
+   "lefthand": false,
+   "controllers": [
+    "rapid",
+    "rapid_multicity",
+    "independent",
+    "mappo",
+    "fixed_program"
+   ],
+   "label": "RAPID-Light (final) vs RAPID-Light multi-city vs Independent DQN vs MAPPO vs Fixed-time (city signals)",
+   "models": {
+    "rapid": "results/nyc16/rapid_v2_mixed/rapid2_mixedtrained_s0.pt",
+    "rapid_multicity": "results/multicity/rapid_multicity_s0.pt",
+    "independent": "models/pune_test/independent_s0.pt",
+    "mappo": "models/pune_test/mappo_s0.pt",
+    "fixed_program": null
+   },
+   "episode_s": 1200,
+   "decision_s": 5,
+   "yellow_s": 2,
+   "agent_order": [
+    "1182895785",
+    "2086912343",
+    "cluster_11182428912_2185649252_7812435226",
+    "cluster_11461786870_1223955197_8062433835",
+    "cluster_11972160478_1534867970",
+    "cluster_13999984636_13999984640_13999984643_13999984644_#2more",
+    "cluster_2087084473_2087084474",
+    "cluster_2181157141_245647055",
+    "joinedS_2087084469_cluster_2087084470_7986850877",
+    "joinedS_7822566316_cluster_11461817373_2225653624_7822566314_7822566318_#3more"
+   ],
+   "created": "2026-11-11T22:17:41"
+  },
+  "runs": [
+   {
+    "name": "rapid",
+    "label": "RAPID-Light (final)",
+    "metrics": {
+     "avg_wait_s": 33.23,
+     "avg_queue": 4.08,
+     "max_queue": 23.0,
+     "throughput": 502.0,
+     "total_travel_h": 166.47,
+     "avg_trip_s": 419.69,
+     "in_network": 972.0,
+     "departed": 1474.0,
+     "not_entered": 6.0,
+     "max_red_s": 60.0,
+     "starvation_viol": 0.0
+    }
+   },
+   {
+    "name": "rapid_multicity",
+    "label": "RAPID-Light multi-city",
+    "metrics": {
+     "avg_wait_s": 30.05,
+     "avg_queue": 3.7,
+     "max_queue": 30.0,
+     "throughput": 585.0,
+     "total_travel_h": 160.39,
+     "avg_trip_s": 421.59,
+     "in_network": 891.0,
+     "departed": 1476.0,
+     "not_entered": 4.0,
+     "max_red_s": 65.0,
+     "starvation_viol": 1.0
+    }
+   },
+   {
+    "name": "independent",
+    "label": "Independent DQN",
+    "metrics": {
+     "avg_wait_s": 18.74,
+     "avg_queue": 2.3,
+     "max_queue": 24.0,
+     "throughput": 454.0,
+     "total_travel_h": 174.88,
+     "avg_trip_s": 405.88,
+     "in_network": 1020.0,
+     "departed": 1474.0,
+     "not_entered": 6.0,
+     "max_red_s": 1020.0,
+     "starvation_viol": 7.0
+    }
+   },
+   {
+    "name": "mappo",
+    "label": "MAPPO",
+    "metrics": {
+     "avg_wait_s": 18.97,
+     "avg_queue": 2.33,
+     "max_queue": 23.0,
+     "throughput": 480.0,
+     "total_travel_h": 173.72,
+     "avg_trip_s": 429.9,
+     "in_network": 993.0,
+     "departed": 1473.0,
+     "not_entered": 7.0,
+     "max_red_s": 1090.0,
+     "starvation_viol": 5.0
+    }
+   },
+   {
+    "name": "fixed_program",
+    "label": "Fixed-time (city signals)",
+    "metrics": {
+     "avg_wait_s": 39.4,
+     "avg_queue": 4.84,
+     "max_queue": 30.0,
+     "throughput": 511.0,
+     "total_travel_h": 170.56,
+     "avg_trip_s": 438.29,
+     "in_network": 962.0,
+     "departed": 1473.0,
+     "not_entered": 7.0,
+     "max_red_s": null,
+     "starvation_viol": null
+    }
+   }
+  ]
+ },
+ {
+  "map": "mumbai",
+  "file": "mumbai_rush_hour_s9001.html",
+  "meta": {
+   "map": "mumbai",
+   "title": "Mumbai",
+   "osm": "mumbai.osm",
+   "scenario": "rush_hour",
+   "seed": 9001,
+   "traffic": "mixed",
+   "shown": "chosen",
+   "avg_episodes": 0,
+   "fleet": "india",
+   "demand_scale": 0.492,
+   "n_trips": 1671,
+   "n_agents": 11,
+   "lefthand": false,
+   "controllers": [
+    "rapid",
+    "rapid_multicity",
+    "independent",
+    "mappo",
+    "fixed_program"
+   ],
+   "label": "RAPID-Light (final) vs RAPID-Light multi-city vs Independent DQN vs MAPPO vs Fixed-time (city signals)",
+   "models": {
+    "rapid": "results/nyc16/rapid_v2_mixed/rapid2_mixedtrained_s0.pt",
+    "rapid_multicity": "results/multicity/rapid_multicity_s0.pt",
+    "independent": "models/mumbai/independent_s0.pt",
+    "mappo": "models/mumbai/mappo_s0.pt",
+    "fixed_program": null
+   },
+   "episode_s": 1200,
+   "decision_s": 5,
+   "yellow_s": 2,
+   "agent_order": [
+    "3981413829",
+    "cluster_10116201906_10116201907_10116201908_245665060",
+    "cluster_10151560371_1366857555",
+    "cluster_10279761586_10279761587_10279809043_10279809044_#1more",
+    "cluster_14266623753_1643351766_2629741747",
+    "cluster_2238597919_245664662_6573759450_6573759451",
+    "cluster_2248801431_2629741730",
+    "cluster_3737129890_5912237867_5912237873_7298860363_#1more",
+    "joinedS_10279809028_cluster_1643264250_2629741740",
+    "joinedS_1351247410_1366956109",
+    "joinedS_9267777726_cluster_12088834962_3981413816"
+   ],
+   "created": "2026-11-11T22:20:19"
+  },
+  "runs": [
+   {
+    "name": "rapid",
+    "label": "RAPID-Light (final)",
+    "metrics": {
+     "avg_wait_s": 57.1,
+     "avg_queue": 7.14,
+     "max_queue": 34.0,
+     "throughput": 407.0,
+     "total_travel_h": 212.98,
+     "avg_trip_s": 397.99,
+     "in_network": 1244.0,
+     "departed": 1651.0,
+     "not_entered": 20.0,
+     "max_red_s": 60.0,
+     "starvation_viol": 0.0
+    }
+   },
+   {
+    "name": "rapid_multicity",
+    "label": "RAPID-Light multi-city",
+    "metrics": {
+     "avg_wait_s": 37.47,
+     "avg_queue": 4.73,
+     "max_queue": 71.0,
+     "throughput": 553.0,
+     "total_travel_h": 193.01,
+     "avg_trip_s": 378.68,
+     "in_network": 1112.0,
+     "departed": 1665.0,
+     "not_entered": 6.0,
+     "max_red_s": 60.0,
+     "starvation_viol": 0.0
+    }
+   },
+   {
+    "name": "independent",
+    "label": "Independent DQN",
+    "metrics": {
+     "avg_wait_s": 19.28,
+     "avg_queue": 2.43,
+     "max_queue": 30.0,
+     "throughput": 487.0,
+     "total_travel_h": 197.08,
+     "avg_trip_s": 379.54,
+     "in_network": 1180.0,
+     "departed": 1667.0,
+     "not_entered": 4.0,
+     "max_red_s": 335.0,
+     "starvation_viol": 8.0
+    }
+   },
+   {
+    "name": "mappo",
+    "label": "MAPPO",
+    "metrics": {
+     "avg_wait_s": 29.37,
+     "avg_queue": 3.71,
+     "max_queue": 71.0,
+     "throughput": 436.0,
+     "total_travel_h": 208.73,
+     "avg_trip_s": 341.28,
+     "in_network": 1232.0,
+     "departed": 1668.0,
+     "not_entered": 3.0,
+     "max_red_s": 940.0,
+     "starvation_viol": 7.0
+    }
+   },
+   {
+    "name": "fixed_program",
+    "label": "Fixed-time (city signals)",
+    "metrics": {
+     "avg_wait_s": 58.21,
+     "avg_queue": 7.25,
+     "max_queue": 49.0,
+     "throughput": 440.0,
+     "total_travel_h": 207.43,
+     "avg_trip_s": 423.71,
+     "in_network": 1204.0,
+     "departed": 1644.0,
+     "not_entered": 27.0,
+     "max_red_s": null,
+     "starvation_viol": null
+    }
+   }
+  ]
+ },
+ {
+  "map": "bangalore",
+  "file": "bangalore_rush_hour_s9001.html",
+  "meta": {
+   "map": "bangalore",
+   "title": "Bangalore",
+   "osm": null,
+   "scenario": "rush_hour",
+   "seed": 9001,
+   "traffic": "mixed",
+   "shown": "chosen",
+   "avg_episodes": 0,
+   "fleet": "india",
+   "demand_scale": 0.364,
+   "n_trips": 1015,
+   "n_agents": 10,
+   "lefthand": false,
+   "controllers": [
+    "rapid",
+    "rapid_multicity",
+    "independent",
+    "mappo",
+    "fixed_program"
+   ],
+   "label": "RAPID-Light (final) vs RAPID-Light multi-city vs Independent DQN vs MAPPO vs Fixed-time (city signals)",
+   "models": {
+    "rapid": "results/nyc16/rapid_v2_mixed/rapid2_mixedtrained_s0.pt",
+    "rapid_multicity": "results/multicity/rapid_multicity_s0.pt",
+    "independent": "models/bangalore/independent_s0.pt",
+    "mappo": "models/bangalore/mappo_s0.pt",
+    "fixed_program": null
+   },
+   "episode_s": 1200,
+   "decision_s": 5,
+   "yellow_s": 2,
+   "agent_order": [
+    "cluster_10036422031_12114002202_12114002206_12138994485_#2more",
+    "cluster_10121158786_10121158787_10121158788_12139240707_#3more",
+    "cluster_10231033892_10231033893_11390080340_11390080341_#4more",
+    "cluster_11378925100_13396930899_13396930900_13396930933_#1more",
+    "joinedS_10015684285_1636820456_1636820490_3755576616",
+    "joinedS_10035532963_cluster_12129943985_5558684129",
+    "joinedS_12134062487_249087971_9140200248_cluster_1087824452_1087824504_11420343270_11420343306_#2more_#1more",
+    "joinedS_12421958517_cluster_12421958516_12421958518_13396930892_13396931009_#1more",
+    "joinedS_1560168999_1636623257_286681888_cluster_11065716854_11065716857_#1more",
+    "joinedS_679993212_cluster_12260962526_12430010319_12523047692_13659423696_#4more"
+   ],
+   "created": "2026-11-11T22:21:19"
+  },
+  "runs": [
+   {
+    "name": "rapid",
+    "label": "RAPID-Light (final)",
+    "metrics": {
+     "avg_wait_s": 22.32,
+     "avg_queue": 1.89,
+     "max_queue": 26.0,
+     "throughput": 696.0,
+     "total_travel_h": 75.16,
+     "avg_trip_s": 272.7,
+     "in_network": 319.0,
+     "departed": 1015.0,
+     "not_entered": 0.0,
+     "max_red_s": 60.0,
+     "starvation_viol": 0.0
+    }
+   },
+   {
+    "name": "rapid_multicity",
+    "label": "RAPID-Light multi-city",
+    "metrics": {
+     "avg_wait_s": 54.61,
+     "avg_queue": 4.62,
+     "max_queue": 74.0,
+     "throughput": 629.0,
+     "total_travel_h": 77.77,
+     "avg_trip_s": 230.17,
+     "in_network": 386.0,
+     "departed": 1015.0,
+     "not_entered": 0.0,
+     "max_red_s": 60.0,
+     "starvation_viol": 0.0
+    }
+   },
+   {
+    "name": "independent",
+    "label": "Independent DQN",
+    "metrics": {
+     "avg_wait_s": 6.03,
+     "avg_queue": 0.5,
+     "max_queue": 24.0,
+     "throughput": 650.0,
+     "total_travel_h": 73.65,
+     "avg_trip_s": 229.01,
+     "in_network": 337.0,
+     "departed": 987.0,
+     "not_entered": 28.0,
+     "max_red_s": 1160.0,
+     "starvation_viol": 2.0
+    }
+   },
+   {
+    "name": "mappo",
+    "label": "MAPPO",
+    "metrics": {
+     "avg_wait_s": 3.43,
+     "avg_queue": 0.28,
+     "max_queue": 11.0,
+     "throughput": 677.0,
+     "total_travel_h": 73.0,
+     "avg_trip_s": 226.57,
+     "in_network": 313.0,
+     "departed": 990.0,
+     "not_entered": 25.0,
+     "max_red_s": 1160.0,
+     "starvation_viol": 1.0
+    }
+   },
+   {
+    "name": "fixed_program",
+    "label": "Fixed-time (city signals)",
+    "metrics": {
+     "avg_wait_s": 46.25,
+     "avg_queue": 3.91,
+     "max_queue": 30.0,
+     "throughput": 678.0,
+     "total_travel_h": 81.09,
+     "avg_trip_s": 308.96,
+     "in_network": 337.0,
+     "departed": 1015.0,
+     "not_entered": 0.0,
+     "max_red_s": null,
+     "starvation_viol": null
+    }
+   }
+  ]
+ },
+ {
+  "map": "jersey",
+  "file": "jersey_rush_hour_s9001.html",
+  "meta": {
+   "map": "jersey",
+   "title": "Jersey",
+   "osm": null,
+   "scenario": "rush_hour",
+   "seed": 9001,
+   "traffic": "mixed",
+   "shown": "chosen",
+   "avg_episodes": 0,
+   "fleet": "india",
+   "demand_scale": 0.805,
+   "n_trips": 1059,
+   "n_agents": 10,
+   "lefthand": false,
+   "controllers": [
+    "rapid",
+    "rapid_multicity",
+    "independent",
+    "mappo",
+    "fixed_program"
+   ],
+   "label": "RAPID-Light (final) vs RAPID-Light multi-city vs Independent DQN vs MAPPO vs Fixed-time (city signals)",
+   "models": {
+    "rapid": "results/nyc16/rapid_v2_mixed/rapid2_mixedtrained_s0.pt",
+    "rapid_multicity": "results/multicity/rapid_multicity_s0.pt",
+    "independent": "models/jersey/independent_s0.pt",
+    "mappo": "models/jersey/mappo_s0.pt",
+    "fixed_program": null
+   },
+   "episode_s": 1200,
+   "decision_s": 5,
+   "yellow_s": 2,
+   "agent_order": [
+    "104960131",
+    "104982544",
+    "105038357",
+    "105038375",
+    "105055856",
+    "105114425",
+    "105169321",
+    "105261435",
+    "cluster_12207982933_12207982938_13179603402_13179603403_#2more",
+    "joinedS_105186869_12776966738_cluster_12776966742_2714854426_2714854489_353489604"
+   ],
+   "created": "2026-11-11T22:22:36"
+  },
+  "runs": [
+   {
+    "name": "rapid",
+    "label": "RAPID-Light (final)",
+    "metrics": {
+     "avg_wait_s": 24.1,
+     "avg_queue": 2.12,
+     "max_queue": 26.0,
+     "throughput": 689.0,
+     "total_travel_h": 112.81,
+     "avg_trip_s": 409.85,
+     "in_network": 368.0,
+     "departed": 1057.0,
+     "not_entered": 2.0,
+     "max_red_s": 60.0,
+     "starvation_viol": 0.0
+    }
+   },
+   {
+    "name": "rapid_multicity",
+    "label": "RAPID-Light multi-city",
+    "metrics": {
+     "avg_wait_s": 25.25,
+     "avg_queue": 2.19,
+     "max_queue": 37.0,
+     "throughput": 580.0,
+     "total_travel_h": 119.63,
+     "avg_trip_s": 401.04,
+     "in_network": 463.0,
+     "departed": 1043.0,
+     "not_entered": 16.0,
+     "max_red_s": 60.0,
+     "starvation_viol": 0.0
+    }
+   },
+   {
+    "name": "independent",
+    "label": "Independent DQN",
+    "metrics": {
+     "avg_wait_s": 8.62,
+     "avg_queue": 0.76,
+     "max_queue": 15.0,
+     "throughput": 665.0,
+     "total_travel_h": 114.85,
+     "avg_trip_s": 414.66,
+     "in_network": 392.0,
+     "departed": 1057.0,
+     "not_entered": 2.0,
+     "max_red_s": 45.0,
+     "starvation_viol": 0.0
+    }
+   },
+   {
+    "name": "mappo",
+    "label": "MAPPO",
+    "metrics": {
+     "avg_wait_s": 30.54,
+     "avg_queue": 2.6,
+     "max_queue": 32.0,
+     "throughput": 507.0,
+     "total_travel_h": 128.11,
+     "avg_trip_s": 396.72,
+     "in_network": 513.0,
+     "departed": 1020.0,
+     "not_entered": 39.0,
+     "max_red_s": 905.0,
+     "starvation_viol": 2.0
+    }
+   },
+   {
+    "name": "fixed_program",
+    "label": "Fixed-time (city signals)",
+    "metrics": {
+     "avg_wait_s": 30.26,
+     "avg_queue": 2.67,
+     "max_queue": 17.0,
+     "throughput": 669.0,
+     "total_travel_h": 116.26,
+     "avg_trip_s": 414.94,
+     "in_network": 390.0,
+     "departed": 1059.0,
+     "not_entered": 0.0,
+     "max_red_s": null,
+     "starvation_viol": null
+    }
+   }
+  ]
+ }
+]
